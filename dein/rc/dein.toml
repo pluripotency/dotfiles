@@ -1,0 +1,58 @@
+# Color
+[[plugins]]
+repo = 'altercation/vim-colors-solarized'
+[[plugins]]
+repo = '29decibel/codeschool-vim-theme'
+[[plugins]]
+repo = 'sjl/badwolf'
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+
+# Lang
+[[plugins]]
+repo = 'fatih/vim-go'
+[[plugins]]
+repo = 'kchmck/vim-coffee-script'
+[[plugins]]
+repo = 'jelera/vim-javascript-syntax'
+
+# pyflakes
+[[plugins]]
+repo = 'mitechie/pyflakes-pathogen'
+
+# git
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+[[plugins]]
+repo = 'gregsexton/gitv'
+
+# Tagbar
+[[plugins]]
+repo = 'majutsushi/tagbar'
+[[plugins]]
+# for indent
+repo = 'nathanaelkane/vim-indent-guides'
+[[plugins]]
+# lightline
+repo = 'itchyny/lightline.vim'
+[[plugins]]
+# sudo.vim
+repo = 'vim-scripts/sudo.vim'
+[[plugins]]
+repo = 'vim-scripts/vim-auto-save'
+
+[[plugins]]
+repo = 'kannokanno/previm'
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+
+[[plugins]]
+repo = 'tyru/caw.vim.git'
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+
+[[plugins]]
+repo = 'surround.vim'
