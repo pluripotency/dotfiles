@@ -32,8 +32,6 @@ if dein#check_install()
   call dein#install()
 endif
 
-
-
 filetype plugin indent on
 syntax enable
 
@@ -42,7 +40,22 @@ let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
-set statusline=%m%r%h%w\ %{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}[%Y]%t\ %{fugitive#statusline()}\ %1l/%L,%c\ %P
+"  \ 'colorscheme': 'PaperColor',
+let g:lightline = {
+  \ 'colorscheme': 'solarized',
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+  \ },
+  \ 'component': {
+  \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+  \ },
+  \ 'component_visible_condition': {
+  \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+  \ },
+  \ }
+
+"set statusline=%m%r%h%w\ %{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}[%Y]%t\ %{fugitive#statusline()}\ %1l/%L,%c\ %P
 set laststatus=2
 
 scriptencoding utf-8
@@ -60,8 +73,11 @@ nnoremap <Space>s. :<C-u>source $HOME/.vimrc<Enter>
 nmap <Leader>t :TagbarToggle<CR>
 
 " caw
-nmap <Leader>c <plug>(caw:i:toggle)
-vmap <Leader>c <plug>(caw:i:toggle)
+" For comment out
+nmap <Leader>/ <plug>(caw:i:toggle)
+vmap <Leader>/ <plug>(caw:i:toggle)
+nmap <C-\> <plug>(caw:i:toggle)
+vmap <C-\> <plug>(caw:i:toggle)
 
 autocmd BufNewFile,BufReadPost /var/log/messages*,/var/log/secure*,/var/log/    *.log :set filetype=messages
 
@@ -76,9 +92,9 @@ set hlsearch
 set showcmd
 set pastetoggle=<F4>
 
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set smarttab
 set expandtab
 set autoindent
@@ -134,9 +150,9 @@ vnoremap ( "zdi(<C-R>z)<ESC>
 vnoremap " "zdi"<C-R>z"<ESC>
 vnoremap ' "zdi'<C-R>z'<ESC>
 
-colorscheme blue
-"colorscheme solarized
+"colorscheme blue
 "colorscheme codeschool
 "colorscheme badwolf
-"set background=dark
+colorscheme solarized
+set background=dark
 

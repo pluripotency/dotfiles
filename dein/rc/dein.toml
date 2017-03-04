@@ -41,18 +41,11 @@ repo = 'itchyny/lightline.vim'
 repo = 'vim-scripts/sudo.vim'
 [[plugins]]
 repo = 'vim-scripts/vim-auto-save'
-
-[[plugins]]
-repo = 'kannokanno/previm'
-
-[[plugins]]
-repo = 'tyru/open-browser.vim'
-
+# for comment out
 [[plugins]]
 repo = 'tyru/caw.vim.git'
 
 [[plugins]]
-repo = 'plasticboy/vim-markdown'
-
-[[plugins]]
 repo = 'surround.vim'
+
+
