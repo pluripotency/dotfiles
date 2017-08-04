@@ -46,6 +46,6 @@ repo = 'vim-scripts/vim-auto-save'
 repo = 'tyru/caw.vim.git'
 
 [[plugins]]
-repo = 'surround.vim'
+repo = 'tpope/vim-surround'
 
 

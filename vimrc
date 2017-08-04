@@ -150,9 +150,9 @@ vnoremap ( "zdi(<C-R>z)<ESC>
 vnoremap " "zdi"<C-R>z"<ESC>
 vnoremap ' "zdi'<C-R>z'<ESC>
 
-"colorscheme blue
+colorscheme blue
 "colorscheme codeschool
 "colorscheme badwolf
-colorscheme solarized
-set background=dark
+"colorscheme solarized
+"set background=dark
 
