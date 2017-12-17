@@ -1,16 +1,22 @@
-#dotfiles
+# dotfiles
 
-for me
-
-###to link .tmux.conf to $HOME
+### to link .tmux.conf to $HOME
+```
 make tmux
+```
 
-###to link .vimrc, .gvimrc to $HOME
+### to link .vimrc, .gvimrc to $HOME
+```
 make vim
+```
 
-###to link all
+### to link all
+```
 make
+```
 
-###to unlink all
+### to unlink all
+```
 make clean
+```
 
