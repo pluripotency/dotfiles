@@ -36,6 +36,7 @@ filetype plugin indent on
 syntax enable
 
 nmap <Leader>^ :NERDTreeToggle<CR>
+nmap <Leader>` :NERDTreeToggle<CR>
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
@@ -150,9 +151,9 @@ vnoremap ( "zdi(<C-R>z)<ESC>
 vnoremap " "zdi"<C-R>z"<ESC>
 vnoremap ' "zdi'<C-R>z'<ESC>
 
-colorscheme blue
+"colorscheme blue
 "colorscheme codeschool
-"colorscheme badwolf
+colorscheme badwolf
 "colorscheme solarized
 "set background=dark
 
