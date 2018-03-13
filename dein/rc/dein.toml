@@ -11,8 +11,6 @@ repo = 'scrooloose/nerdtree'
 
 # Lang
 [[plugins]]
-repo = 'fatih/vim-go'
-[[plugins]]
 repo = 'kchmck/vim-coffee-script'
 [[plugins]]
 repo = 'jelera/vim-javascript-syntax'

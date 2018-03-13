@@ -156,4 +156,3 @@ vnoremap ' "zdi'<C-R>z'<ESC>
 colorscheme badwolf
 "colorscheme solarized
 "set background=dark
-
