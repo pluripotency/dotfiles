@@ -85,7 +85,7 @@ autocmd BufNewFile,BufReadPost /var/log/messages*,/var/log/secure*,/var/log/    
 
 set number
 set noswapfile
-set gfn=Ricty\ Discord\ for\ PowerLine\ Regular\ 12
+"set gfn=Ricty\ Discord\ for\ PowerLine\ Regular\ 12
 set backspace=indent,start,eol
 set ignorecase
 set smartcase
