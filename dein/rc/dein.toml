@@ -14,6 +14,8 @@ repo = 'scrooloose/nerdtree'
 repo = 'kchmck/vim-coffee-script'
 [[plugins]]
 repo = 'jelera/vim-javascript-syntax'
+[[plugins]]
+repo = 'rust-lang/rust.vim'
 
 # pyflakes
 [[plugins]]
