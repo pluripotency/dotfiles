@@ -47,5 +47,7 @@ repo = 'tyru/caw.vim.git'
 
 [[plugins]]
 repo = 'tpope/vim-surround'
+[[plugins]]
+repo = 'terryma/vim-multiple-cursors'
 
 

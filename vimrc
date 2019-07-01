@@ -35,8 +35,11 @@ endif
 filetype plugin indent on
 syntax enable
 
-nmap <Leader>^ :NERDTreeToggle<CR>
-nmap <Leader>` :NERDTreeToggle<CR>
+" map Leader to space key
+let mapleader = "\<Space>"
+
+nmap <Leader>\ :NERDTreeToggle<CR>
+nmap <Leader>n :NERDTreeToggle<CR>
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
@@ -56,7 +59,7 @@ let g:lightline = {
   \ },
   \ }
 
-"set statusline=%m%r%h%w\ %{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}[%Y]%t\ %{fugitive#statusline()}\ %1l/%L,%c\ %P
+set statusline=%m%r%h%w\ %{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}[%Y]%t\ %{fugitive#statusline()}\ %1l/%L,%c\ %P
 set laststatus=2
 
 scriptencoding utf-8
