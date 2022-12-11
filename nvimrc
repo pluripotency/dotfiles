@@ -3,6 +3,10 @@ if empty(glob('$HOME/.local/share/nvim/site/autoload/plug.vim'))
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+"if empty(glob('$HOME/.local/share/fonts/DroidSansMonoNerdFontComplete.otf'))
+"  silent !curl -fLo $HOME/.local/share/fonts/DroidSansMonoNerdFontComplete.otf --create-dirs 
+"    \ https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DroidSansMono/complete/Droid\%20Sans\%20Mono\%20Nerd\%20Font\%20Complete.otf
+"endif
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
       \| PlugInstall --sync | source $MYVIMRC
       \| endif
@@ -27,7 +31,8 @@ Plug 'majutsushi/tagbar'
 " for indent
 Plug 'nathanaelkane/vim-indent-guides'
 " lightline
-Plug 'itchyny/lightline.vim'
+"Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
 " sudo.vim
 Plug 'vim-scripts/sudo.vim'
 Plug 'vim-scripts/vim-auto-save'
@@ -66,24 +71,6 @@ let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
-"  \ 'colorscheme': 'PaperColor',
-let g:lightline = {
-  \ 'colorscheme': 'solarized',
-  \ 'active': {
-  \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
-  \ },
-  \ 'component': {
-  \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
-  \ },
-  \ 'component_visible_condition': {
-  \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
-  \ },
-  \ }
-
-set statusline=%m%r%h%w\ %{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}[%Y]%t\ %{fugitive#statusline()}\ %1l/%L,%c\ %P
-set laststatus=2
-
 scriptencoding utf-8
 set encoding=utf-8
 "if has('windows')
@@ -110,6 +97,8 @@ autocmd BufNewFile,BufReadPost /var/log/messages*,/var/log/secure*,/var/log/    
 
 set number
 set noswapfile
+"set guifont=DroidSansMono\ Nerd\ Font\ 12
+"set guifontwide=DroidSansMono\ Nerd\ Font\ 12
 "set gfn=Ricty\ Discord\ for\ PowerLine\ Regular\ 12
 set backspace=indent,start,eol
 set ignorecase
