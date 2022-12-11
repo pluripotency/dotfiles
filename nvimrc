@@ -94,8 +94,8 @@ if !has('gui_running')
   set t_Co=256
 endif
 
-nnoremap <Space>. :<C-u>edit $HOME/.vimrc<Enter>
-nnoremap <Space>s. :<C-u>source $HOME/.vimrc<Enter>
+nnoremap <Leader>. :<C-u>edit $HOME/.nvimrc<Enter>
+nnoremap <Leader>s. :<C-u>source $HOME/.nvimrc<Enter>
 nmap <Leader>t :TagbarToggle<CR>
 
 " caw
