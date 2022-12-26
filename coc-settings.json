@@ -1,0 +1,6 @@
+{
+  "jedi": {
+    "enable": true,
+    "startupMessage": false,
+    "executable.command": "~/.virtualenv/v3/bin/jedi-language-server"
+}

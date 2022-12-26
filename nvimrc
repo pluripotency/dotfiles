@@ -12,6 +12,8 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
       \| endif
 
 call plug#begin('$HOME/.local/share/nvim/plugged')
+" Coc
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}↲
 " Color
 Plug 'altercation/vim-colors-solarized'
 Plug '29decibel/codeschool-vim-theme'
@@ -67,6 +69,8 @@ let mapleader = "\<Space>"
 
 nmap <Leader>\ :NERDTreeToggle<CR>
 nmap <Leader>n :NERDTreeToggle<CR>
+# this is needed for nvim: https://github.com/preservim/nerdtree/issues/1321
+let g:NERDTreeMinimalMenu = 1
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
