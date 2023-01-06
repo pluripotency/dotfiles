@@ -3,6 +3,10 @@ if empty(glob('$HOME/.local/share/nvim/site/autoload/plug.vim'))
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+"if empty(glob('$HOME/.local/share/fonts/RictyDiminished-Regular-Powerline.ttf'))
+"  silent !curl -fLo $HOME/.local/share/fonts/RictyDiminished-Regular-Powerline.ttf --create-dirs 
+"    \ https://github.com/mzyy94/RictyDiminished-for-Powerline/raw/master/vim-powerline-fontpatched/RictyDiminished-Regular-Powerline.ttf
+"endif
 "if empty(glob('$HOME/.local/share/fonts/DroidSansMonoNerdFontComplete.otf'))
 "  silent !curl -fLo $HOME/.local/share/fonts/DroidSansMonoNerdFontComplete.otf --create-dirs 
 "    \ https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DroidSansMono/complete/Droid\%20Sans\%20Mono\%20Nerd\%20Font\%20Complete.otf
@@ -18,6 +22,13 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug '29decibel/codeschool-vim-theme'
 Plug 'sjl/badwolf'
+"Plug 'nelstrom/vim-blackboard'
+"Plug 'josephwecker/murphytango.vim'
+"Plug 'imarbuger/vim-vividchalk'
+"Plug 'ciaranm/inkpot'
+"Plug 'dracula/vim'
+"Plug 'ayu-theme/ayu-vim'
+" NerdTree
 Plug 'scrooloose/nerdtree'
 " Lang
 Plug 'kchmck/vim-coffee-script'
@@ -69,7 +80,7 @@ let mapleader = "\<Space>"
 
 nmap <Leader>\ :NERDTreeToggle<CR>
 nmap <Leader>n :NERDTreeToggle<CR>
-# this is needed for nvim: https://github.com/preservim/nerdtree/issues/1321
+" this is needed for nvim: https://github.com/preservim/nerdtree/issues/1321
 let g:NERDTreeMinimalMenu = 1
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable = '▸'
@@ -104,6 +115,7 @@ set noswapfile
 "set guifont=DroidSansMono\ Nerd\ Font\ 12
 "set guifontwide=DroidSansMono\ Nerd\ Font\ 12
 "set gfn=Ricty\ Discord\ for\ PowerLine\ Regular\ 12
+"set gfn=RictyDiminished-Regular-Powerline
 set backspace=indent,start,eol
 set ignorecase
 set smartcase
@@ -143,6 +155,13 @@ augroup PrevimSettings
   autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 augroup END
 
+"Airline
+set laststatus=2
+set showtabline=2 " 常にタブラインを表示
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline_powerline_fonts = 1
+
 set list
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 
@@ -171,6 +190,8 @@ vnoremap ' "zdi'<C-R>z'<ESC>
 
 "colorscheme blue
 "colorscheme codeschool
-colorscheme badwolf
+"colorscheme badwolf
+"colorscheme elflord
+colorscheme peachpuff
 "colorscheme solarized
 "set background=dark
