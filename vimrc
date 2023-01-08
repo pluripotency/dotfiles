@@ -1,36 +1,68 @@
-" install dir
-let s:dein_dir = expand('~/local/dein')
-" dein.vim
-let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-
-" install dein
-if &runtimepath !~# '/dein.vim'
-  if !isdirectory(s:dein_repo_dir)
-    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
-  endif
-  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
+if empty(glob('$HOME/.vim/autoload/plug.vim'))
+  silent !curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+"if empty(glob('$HOME/.local/share/fonts/RictyDiminished-Regular-Powerline.ttf'))
+"  silent !curl -fLo $HOME/.local/share/fonts/RictyDiminished-Regular-Powerline.ttf --create-dirs 
+"    \ https://github.com/mzyy94/RictyDiminished-for-Powerline/raw/master/vim-powerline-fontpatched/RictyDiminished-Regular-Powerline.ttf
+"endif
+"if empty(glob('$HOME/.local/share/fonts/DroidSansMonoNerdFontComplete.otf'))
+"  silent !curl -fLo $HOME/.local/share/fonts/DroidSansMonoNerdFontComplete.otf --create-dirs 
+"    \ https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DroidSansMono/complete/Droid\%20Sans\%20Mono\%20Nerd\%20Font\%20Complete.otf
+"endif
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+      \| PlugInstall --sync | source $MYVIMRC
+      \| endif
 
-" load toml
-if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir)
+call plug#begin('$HOME/.vim/plugged')
+" Coc
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}↲
+" Color
+Plug 'altercation/vim-colors-solarized'
+Plug '29decibel/codeschool-vim-theme'
+Plug 'sjl/badwolf'
+"Plug 'nelstrom/vim-blackboard'
+"Plug 'josephwecker/murphytango.vim'
+"Plug 'imarbuger/vim-vividchalk'
+"Plug 'ciaranm/inkpot'
+"Plug 'dracula/vim'
+"Plug 'ayu-theme/ayu-vim'
+" NerdTree
+Plug 'scrooloose/nerdtree'
+" Lang
+Plug 'kchmck/vim-coffee-script'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'rust-lang/rust.vim'
+" pyflakes
+Plug 'mitechie/pyflakes-pathogen'
+" git
+Plug 'tpope/vim-fugitive'
+Plug 'gregsexton/gitv'
+" Tagbar
+Plug 'majutsushi/tagbar'
+" for indent
+Plug 'nathanaelkane/vim-indent-guides'
+" lightline
+"Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+" sudo.vim
+Plug 'vim-scripts/sudo.vim'
+Plug 'vim-scripts/vim-auto-save'
+" for comment out
+Plug 'tyru/caw.vim'
+Plug 'tpope/vim-surround'
+Plug 'terryma/vim-multiple-cursors'
+" rust
+Plug 'rust-lang/rust.vim'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
-  let g:rc_dir    = expand('~/dotfiles/dein/rc')
-  let s:toml      = g:rc_dir . '/dein.toml'
-  let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
-
-  " read toml
-  call dein#load_toml(s:toml,      {'lazy': 0})
-  call dein#load_toml(s:lazy_toml, {'lazy': 1})
-
-  call dein#end()
-  call dein#save_state()
-endif
-
-" install if not installed
-if dein#check_install()
-  call dein#install()
-endif
+Plug 'plasticboy/vim-markdown'
+Plug 'digitaltoad/vim-jade'
+call plug#end()
 
 if executable('rls')
   au User lsp_setup call lsp#register_server({
@@ -48,27 +80,11 @@ let mapleader = "\<Space>"
 
 nmap <Leader>\ :NERDTreeToggle<CR>
 nmap <Leader>n :NERDTreeToggle<CR>
+" this is needed for nvim: https://github.com/preservim/nerdtree/issues/1321
+let g:NERDTreeMinimalMenu = 1
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
-
-"  \ 'colorscheme': 'PaperColor',
-let g:lightline = {
-  \ 'colorscheme': 'solarized',
-  \ 'active': {
-  \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
-  \ },
-  \ 'component': {
-  \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
-  \ },
-  \ 'component_visible_condition': {
-  \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
-  \ },
-  \ }
-
-set statusline=%m%r%h%w\ %{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}[%Y]%t\ %{fugitive#statusline()}\ %1l/%L,%c\ %P
-set laststatus=2
 
 scriptencoding utf-8
 set encoding=utf-8
@@ -80,8 +96,8 @@ if !has('gui_running')
   set t_Co=256
 endif
 
-nnoremap <Space>. :<C-u>edit $HOME/.vimrc<Enter>
-nnoremap <Space>s. :<C-u>source $HOME/.vimrc<Enter>
+nnoremap <Leader>. :<C-u>edit $HOME/.vimrc<Enter>
+nnoremap <Leader>s. :<C-u>source $HOME/.vimrc<Enter>
 nmap <Leader>t :TagbarToggle<CR>
 
 " caw
@@ -96,7 +112,10 @@ autocmd BufNewFile,BufReadPost /var/log/messages*,/var/log/secure*,/var/log/    
 
 set number
 set noswapfile
+"set guifont=DroidSansMono\ Nerd\ Font\ 12
+"set guifontwide=DroidSansMono\ Nerd\ Font\ 12
 "set gfn=Ricty\ Discord\ for\ PowerLine\ Regular\ 12
+"set gfn=RictyDiminished-Regular-Powerline
 set backspace=indent,start,eol
 set ignorecase
 set smartcase
@@ -136,6 +155,13 @@ augroup PrevimSettings
   autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 augroup END
 
+"Airline
+"set laststatus=2
+"set showtabline=2 " 常にタブラインを表示
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline_powerline_fonts = 1
+
 set list
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 
@@ -165,5 +191,7 @@ vnoremap ' "zdi'<C-R>z'<ESC>
 "colorscheme blue
 "colorscheme codeschool
 colorscheme badwolf
+"colorscheme elflord
+"colorscheme peachpuff
 "colorscheme solarized
 "set background=dark

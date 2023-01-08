@@ -156,8 +156,8 @@ augroup PrevimSettings
 augroup END
 
 "Airline
-set laststatus=2
-set showtabline=2 " 常にタブラインを表示
+"set laststatus=2
+"set showtabline=2 " 常にタブラインを表示
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline_powerline_fonts = 1
