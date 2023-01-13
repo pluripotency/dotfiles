@@ -17,7 +17,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 call plug#begin('$HOME/.local/share/nvim/plugged')
 " Coc
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}↲
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Color
 Plug 'altercation/vim-colors-solarized'
 Plug '29decibel/codeschool-vim-theme'
