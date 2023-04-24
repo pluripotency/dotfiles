@@ -18,6 +18,8 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 call plug#begin('$HOME/.local/share/nvim/plugged')
 " Coc
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Terminal
+Plug 'thinca/vim-quickrun'
 " Color
 Plug 'altercation/vim-colors-solarized'
 Plug '29decibel/codeschool-vim-theme'
@@ -72,6 +74,8 @@ if executable('rls')
         \ })
 endif
 
+let g:python3_host_prog = '/home/worker/.virtualenv/v3/bin/python'
+let g:python_host_prog = '/home/worker/.virtualenv/v3/bin/python'
 filetype plugin indent on
 syntax enable
 
@@ -190,8 +194,8 @@ vnoremap ' "zdi'<C-R>z'<ESC>
 
 "colorscheme blue
 "colorscheme codeschool
-"colorscheme badwolf
+colorscheme badwolf
 "colorscheme elflord
-colorscheme peachpuff
+"colorscheme peachpuff
 "colorscheme solarized
 "set background=dark
