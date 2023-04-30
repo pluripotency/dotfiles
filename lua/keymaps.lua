@@ -4,9 +4,9 @@ local term_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 --Remap space as leader key
-keymap("n", "<Space>", "<Nop>", opts)
+--keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+--vim.g.maplocalleader = " "
 
 -- Modes
 --   normal_mode = 'n',
@@ -30,9 +30,7 @@ keymap("n", "<S-Left>",  "<C-w><<CR>", opts)
 keymap("n", "<S-Right>", "<C-w>><CR>", opts)
 keymap("n", "<S-Up>",    "<C-w>-<CR>", opts)
 keymap("n", "<S-Down>",  "<C-w>+<CR>", opts)
-keymap("n", "<leader>.",  "i<C-", opts)
-
-keymap("n", "<Leader>.",  ":<C-u>edit $HOME/.config/nvim/nvimrc<Enter>", opts)
-keymap("n", "<Leader>s.", ":<C-u>source $HOME/.config/nvim/nvimrc<Enter>", opts)
+keymap("n", "<Leader>.",  ":<C-u>edit $HOME/dotfiles/lua<Enter>", opts)
+keymap("n", "<Leader>s.", ":<C-u>source $HOME/.config/nvim/init.lua<Enter>", opts)
 keymap("n", "<Leader>t",  ":TagbarToggle<CR>", {})
 

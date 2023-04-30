@@ -54,8 +54,6 @@ require("packer").startup(function()
   use 'tyru/caw.vim'
   use 'tpope/vim-surround'
   use 'terryma/vim-multiple-cursors'
-  -- rust
-  use 'rust-lang/rust.vim'
   use 'prabirshrestha/async.vim'
   use 'prabirshrestha/vim-lsp'
   use 'prabirshrestha/asyncomplete.vim'

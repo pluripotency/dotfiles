@@ -104,15 +104,14 @@ nnoremap <Leader>. :<C-u>edit $HOME/.config/nvim/nvimrc<Enter>
 nnoremap <Leader>s. :<C-u>source $HOME/.config/nvim/nvimrc<Enter>
 nmap <Leader>t :TagbarToggle<CR>
 
-" caw
-" For comment out
+" caw For comment out
 nmap <Leader>/ <plug>(caw:i:toggle)
 vmap <Leader>/ <plug>(caw:i:toggle)
-nmap <C-\> <plug>(caw:i:toggle)
-vmap <C-\> <plug>(caw:i:toggle)
+" <C-_> means <C-/>
+nmap <C-_> <plug>(caw:i:toggle)
+vmap <C-_> <plug>(caw:i:toggle)
 
 autocmd BufRead /var/log/messages*,/var/log/secure*,/var/log/*.log :setlocal filetype=messages
-
 
 set number
 set noswapfile
@@ -135,6 +134,9 @@ set expandtab
 set autoindent
 set nosmartindent
 set cindent
+
+set list
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 
 " for jedi
 " command! -nargs=0 JediRename :call jedi#rename()
@@ -166,9 +168,6 @@ augroup END
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline_powerline_fonts = 1
-
-set list
-set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 
 " Ctrl + hjkl でウィンドウ間を移動
 nnoremap <C-h> <C-w>h

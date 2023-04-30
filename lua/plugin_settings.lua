@@ -18,12 +18,12 @@ local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
 
--- caw for comment out
-keymap("n", "<Leader>/", "<plug>(caw:i:toggle)", {})
-keymap("v", "<Leader>/", "<plug>(caw:i:toggle)", {})
-keymap("n", "<C-\\>", "<plug>(caw:i:toggle)", {})
-keymap("v", "<C-\\>", "<plug>(caw:i:toggle)", {})
+-- caw for comment out <C-_> means <C-/>
+keymap("n", "<C-_>",     "<plug>(caw:i:toggle)", opts)
+keymap("v", "<C-_>",     "<plug>(caw:i:toggle)", opts)
+keymap("n", "<Leader>/", "<plug>(caw:i:toggle)", opts)
+keymap("v", "<Leader>/", "<plug>(caw:i:toggle)", opts)
 
 -- nerdtree
 keymap("n", "<leader>n", ":NERDTreeToggle<CR>", {noremap = true})
-
+vim.g.NERDTreeDirArrow = 1
