@@ -1,4 +1,6 @@
 vim.g.auto_save = 1
+vim.g.python3_host_prog = '/home/worker/.virtualenv/v3/bin/python'
+vim.g.python_host_prog = '/home/worker/.virtualenv/v3/bin/python'
 
 local options = {
   encoding = "utf-8",
