@@ -18,7 +18,9 @@ local options = {
   expandtab = true,
   autoindent = true,
   smartindent = false,
-  cindent = true
+  cindent = true,
+  list = true,
+  listchars = 'tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%'
 }
 for k, v in pairs(options) do
   vim.opt[k] = v

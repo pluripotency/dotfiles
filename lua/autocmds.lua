@@ -1,4 +1,5 @@
 vim.cmd 'autocmd BufNewFile,BufReadPost /var/log/messages*,/var/log/secure*,/var/log/*.log :set filetype=messages'
+
 local augroup = vim.api.nvim_create_augroup -- Create/get autocommand group
 local autocmd = vim.api.nvim_create_autocmd -- Create autocommand
 

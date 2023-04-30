@@ -4,11 +4,11 @@ if empty(glob('$HOME/.local/share/nvim/site/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 "if empty(glob('$HOME/.local/share/fonts/RictyDiminished-Regular-Powerline.ttf'))
-"  silent !curl -fLo $HOME/.local/share/fonts/RictyDiminished-Regular-Powerline.ttf --create-dirs 
+"  silent !curl -fLo $HOME/.local/share/fonts/RictyDiminished-Regular-Powerline.ttf --create-dirs
 "    \ https://github.com/mzyy94/RictyDiminished-for-Powerline/raw/master/vim-powerline-fontpatched/RictyDiminished-Regular-Powerline.ttf
 "endif
 "if empty(glob('$HOME/.local/share/fonts/DroidSansMonoNerdFontComplete.otf'))
-"  silent !curl -fLo $HOME/.local/share/fonts/DroidSansMonoNerdFontComplete.otf --create-dirs 
+"  silent !curl -fLo $HOME/.local/share/fonts/DroidSansMonoNerdFontComplete.otf --create-dirs
 "    \ https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DroidSansMono/complete/Droid\%20Sans\%20Mono\%20Nerd\%20Font\%20Complete.otf
 "endif
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
@@ -45,7 +45,7 @@ Plug 'gregsexton/gitv'
 " Tagbar
 Plug 'majutsushi/tagbar'
 " for indent
-Plug 'nathanaelkane/vim-indent-guides'
+Plug 'preservim/vim-indent-guides'
 " lightline
 "Plug 'itchyny/lightline.vim'
 Plug 'vim-airline/vim-airline'
@@ -111,7 +111,7 @@ vmap <Leader>/ <plug>(caw:i:toggle)
 nmap <C-\> <plug>(caw:i:toggle)
 vmap <C-\> <plug>(caw:i:toggle)
 
-autocmd BufNewFile,BufReadPost /var/log/messages*,/var/log/secure*,/var/log/    *.log :set filetype=messages
+autocmd BufRead /var/log/messages*,/var/log/secure*,/var/log/*.log :setlocal filetype=messages
 
 
 set number
@@ -142,6 +142,7 @@ set cindent
 " let g:jedi#pytdoc ="k"
 
 " for vim-indent-guides
+let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_color = 0
 let g:indent_guides_start_level = 2
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=red ctermbg=3

@@ -1,6 +1,5 @@
 local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
-
 --local keymap = vim.keymap
 local keymap = vim.api.nvim_set_keymap
 
@@ -36,16 +35,4 @@ keymap("n", "<leader>.",  "i<C-", opts)
 keymap("n", "<Leader>.",  ":<C-u>edit $HOME/.config/nvim/nvimrc<Enter>", opts)
 keymap("n", "<Leader>s.", ":<C-u>source $HOME/.config/nvim/nvimrc<Enter>", opts)
 keymap("n", "<Leader>t",  ":TagbarToggle<CR>", {})
-
--- caw
--- For comment out
-keymap("n", "<Leader>/", "<plug>(caw:i:toggle)", {})
-keymap("v", "<Leader>/", "<plug>(caw:i:toggle)", {})
-keymap("n", "<C-\\>", "<plug>(caw:i:toggle)", {})
-keymap("v", "<C-\\>", "<plug>(caw:i:toggle)", {})
-
--- nerdtree
-keymap("n", "<leader>n", ":NERDTreeToggle<CR>", {noremap = true})
-
-
 
