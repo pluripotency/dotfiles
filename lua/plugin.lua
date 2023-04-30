@@ -14,7 +14,7 @@ vim.cmd [[packadd packer.nvim]] -- packadd packer module
 require("packer").startup(function()
   use 'wbthomason/packer.nvim'
   -- Coc
-  --use 'neoclide/coc.nvim'
+  use({'neoclide/coc.nvim', branch = 'release'})
   -- Terminal
   use 'thinca/vim-quickrun'
   -- Color
