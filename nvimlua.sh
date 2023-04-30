@@ -12,10 +12,8 @@ esac
 
 echo "Create ${NVCONF_DIR}"
 mkdir -p ${NVCONF_DIR}
-for ITEM in nvimrc cocrc coc-settings.json
+for ITEM in init.lua cocrc coc-settings.json lua
 do
 	ln -snf ${CURRENT}/${ITEM} ${NVCONF_DIR}/${ITEM}
 done
-echo "source ${CURRENT}/nvimrc" > ${NVCONF_DIR}/init.vim
-echo "\"source ${CURRENT}/cocrc" >> ${NVCONF_DIR}/init.vim
 
