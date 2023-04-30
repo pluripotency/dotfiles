@@ -16,8 +16,9 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
       \| endif
 
 call plug#begin('$HOME/.local/share/nvim/plugged')
+Plug 'wbthomason/packer.nvim'
 " Coc
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Terminal
 Plug 'thinca/vim-quickrun'
 " Color
@@ -65,7 +66,6 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'digitaltoad/vim-jade'
 call plug#end()
-
 if executable('rls')
   au User lsp_setup call lsp#register_server({
         \ 'name': 'rls',
@@ -100,8 +100,8 @@ if !has('gui_running')
   set t_Co=256
 endif
 
-nnoremap <Leader>. :<C-u>edit $HOME/.nvimrc<Enter>
-nnoremap <Leader>s. :<C-u>source $HOME/.nvimrc<Enter>
+nnoremap <Leader>. :<C-u>edit $HOME/.config/nvim/nvimrc<Enter>
+nnoremap <Leader>s. :<C-u>source $HOME/.config/nvim/nvimrc<Enter>
 nmap <Leader>t :TagbarToggle<CR>
 
 " caw
@@ -194,8 +194,9 @@ vnoremap ' "zdi'<C-R>z'<ESC>
 
 "colorscheme blue
 "colorscheme codeschool
-colorscheme badwolf
-"colorscheme elflord
+"colorscheme badwolf
+colorscheme elflord
 "colorscheme peachpuff
 "colorscheme solarized
 "set background=dark
+
