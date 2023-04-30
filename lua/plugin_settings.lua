@@ -14,16 +14,3 @@ vim.g.indent_guides_guide_size = 1
 vim.cmd 'autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3'
 vim.cmd 'autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4'
 
-local opts = { noremap = true, silent = true }
-local term_opts = { silent = true }
-local keymap = vim.api.nvim_set_keymap
-
--- caw for comment out <C-_> means <C-/>
-keymap("n", "<C-_>",     "<plug>(caw:i:toggle)", opts)
-keymap("v", "<C-_>",     "<plug>(caw:i:toggle)", opts)
-keymap("n", "<Leader>/", "<plug>(caw:i:toggle)", opts)
-keymap("v", "<Leader>/", "<plug>(caw:i:toggle)", opts)
-
--- nerdtree
-keymap("n", "<leader>n", ":NERDTreeToggle<CR>", {noremap = true})
-vim.g.NERDTreeDirArrow = 1

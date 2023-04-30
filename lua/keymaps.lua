@@ -36,3 +36,12 @@ keymap("n", "<Leader>s.", ":<C-u>source $HOME/.config/nvim/init.lua<Enter>", opt
 -- Tagbar (require ctags)
 keymap("n", "<Leader>t",  ":TagbarToggle<CR>", {})
 
+-- caw for comment out <C-_> means <C-/>
+keymap("n", "<C-_>",     "<plug>(caw:i:toggle)", opts)
+keymap("v", "<C-_>",     "<plug>(caw:i:toggle)", opts)
+keymap("n", "<Leader>/", "<plug>(caw:i:toggle)", opts)
+keymap("v", "<Leader>/", "<plug>(caw:i:toggle)", opts)
+
+-- nerdtree
+keymap("n", "<leader>n", ":NERDTreeToggle<CR>", {noremap = true})
+vim.g.NERDTreeDirArrow = 1
