@@ -17,7 +17,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 call plug#begin('$HOME/.vim/plugged')
 " Coc
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}↲
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Color
 Plug 'altercation/vim-colors-solarized'
 Plug '29decibel/codeschool-vim-theme'
@@ -74,6 +74,13 @@ endif
 
 filetype plugin indent on
 syntax enable
+
+if executable('/msys2.exe')
+  let &t_ti.="\e[1 q"
+  let &t_SI.="\e[5 q"
+  let &t_EI.="\e[1 q"
+  let &t_te.="\e[0 q"
+endif
 
 " map Leader to space key
 let mapleader = "\<Space>"
