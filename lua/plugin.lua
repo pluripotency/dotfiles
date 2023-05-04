@@ -18,6 +18,7 @@ require("packer").startup(function()
   -- Terminal
   use 'thinca/vim-quickrun'
   -- Color
+  use 'doums/darcula'
   use 'altercation/vim-colors-solarized'
   use '29decibel/codeschool-vim-theme'
   use 'sjl/badwolf'

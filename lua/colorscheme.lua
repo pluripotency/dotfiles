@@ -1,4 +1,5 @@
-vim.cmd 'colorscheme elflord'
+--vim.cmd 'colorscheme elflord'
+vim.cmd 'colorscheme darcula'
 --vim.cmd 'colorscheme darkblue'
 --vim.cmd 'colorscheme peachpuff'
 --vim.cmd 'colorscheme badwolf'
