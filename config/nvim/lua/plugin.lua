@@ -33,13 +33,13 @@ packer.init({
 require("packer").startup(function()
   use 'wbthomason/packer.nvim'
   -- LSP
---  use 'neovim/nvim-lspconfig'
---  use 'williamboman/mason.nvim'
---  use 'williamboman/mason-lspconfig.nvim'
---  -- Cmp
---  use "hrsh7th/nvim-cmp"
---  use "hrsh7th/cmp-nvim-lsp"
---  use "hrsh7th/vim-vsnip"
+  use 'neovim/nvim-lspconfig'
+  use 'williamboman/mason.nvim'
+  use 'williamboman/mason-lspconfig.nvim'
+  -- Cmp
+  use "hrsh7th/nvim-cmp"
+  use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/vim-vsnip"
   -- Coc
 --  use({'neoclide/coc.nvim', branch = 'release'})
   -- Terminal
@@ -54,7 +54,6 @@ require("packer").startup(function()
   --use 'josephwecker/murphytango.vim'
   --use 'imarbuger/vim-vividchalk'
   --use 'ciaranm/inkpot'
-  --use 'dracula/vim'
   --use 'ayu-theme/ayu-vim'
   -- NerdTree
   --use 'scrooloose/nerdtree'

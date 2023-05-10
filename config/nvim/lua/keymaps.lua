@@ -17,6 +17,10 @@ vim.g.mapleader = " "
 --   command_mode = 'c',
 
 -- Normal --
+-- Buffer Navigation
+keymap("n", "<Leader>l", ":ls<CR>:buf", opts)
+keymap("n", "<Leader>j", ":bprev<CR>", opts)
+keymap("n", "<Leader>k", ":bnext<CR>", opts)
 -- Better Window Navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
@@ -26,10 +30,10 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "ss",  ":split<Return><C-w>w", opts)
 keymap("n", "sv",  ":vsplit<Return><C-w>w", opts)
 -- Change Window Size
-keymap("n", "<S-Left>",  "<C-w><<CR>", opts)
-keymap("n", "<S-Right>", "<C-w>><CR>", opts)
-keymap("n", "<S-Up>",    "<C-w>-<CR>", opts)
-keymap("n", "<S-Down>",  "<C-w>+<CR>", opts)
+keymap("n", "<S-Left>",  "<C-w>><CR>", opts)
+keymap("n", "<S-Down>",  "<C-w>-<CR>", opts)
+keymap("n", "<S-Up>",    "<C-w>+<CR>", opts)
+keymap("n", "<S-Right>", "<C-w><<CR>", opts)
 -- Edit Config
 keymap("n", "<Leader>.",  ":<C-u>edit $HOME/dotfiles/lua<Enter>", opts)
 keymap("n", "<Leader>s.", ":<C-u>source $HOME/.config/nvim/init.lua<Enter>", opts)
