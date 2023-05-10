@@ -1,28 +1,55 @@
 local fn = vim.fn
-local install_dir = fn.stdpath('data') .. '/site/pack/packer'
-local install_path = install_dir .. '/opt/packer.nvim'
-if fn.empty(fn.glob(install_dir)) > 0 then
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
     print("installing: " .. install_path)
     packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
     download_result = fn.system({'ls', '-l', install_path})
     print("download_result: " .. download_result)
+    print("Close and reopen Neovim")
+    vim.cmd [[packadd packer.nvim]] -- packadd packer module
 end
 
-vim.cmd [[packadd packer.nvim]] -- packadd packer module
+-- Autocommand that reloads neovim whenever you save the plugins.lua file
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]])
 
---vim.cmd.packadd "packer.nvim"
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+  return
+end
+
+packer.init({
+  display = {
+    open_fn = function()
+      return require("packer.util").float({ border = "rounded" })
+    end,
+  },
+})
+
 require("packer").startup(function()
   use 'wbthomason/packer.nvim'
+  -- LSP
+--  use 'neovim/nvim-lspconfig'
+--  use 'williamboman/mason.nvim'
+--  use 'williamboman/mason-lspconfig.nvim'
+--  -- Cmp
+--  use "hrsh7th/nvim-cmp"
+--  use "hrsh7th/cmp-nvim-lsp"
+--  use "hrsh7th/vim-vsnip"
   -- Coc
-  use({'neoclide/coc.nvim', branch = 'release'})
+--  use({'neoclide/coc.nvim', branch = 'release'})
   -- Terminal
   use 'thinca/vim-quickrun'
   -- Color
   use 'doums/darcula'
   use 'altercation/vim-colors-solarized'
-  use '29decibel/codeschool-vim-theme'
   use 'sjl/badwolf'
-  use 'EdenEast/nightfox.nvim'
+  use 'folke/tokyonight.nvim'
+  --use '29decibel/codeschool-vim-theme'
   --use 'nelstrom/vim-blackboard'
   --use 'josephwecker/murphytango.vim'
   --use 'imarbuger/vim-vividchalk'
@@ -63,7 +90,7 @@ require("packer").startup(function()
   use 'plasticboy/vim-markdown'
   use 'digitaltoad/vim-jade'
 
-  if packer_bootstrap then
+  if PACKER_BOOTSTRAP then
     require('packer').sync()
   end
 end)
