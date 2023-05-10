@@ -34,6 +34,10 @@ keymap("n", "<S-Left>",  "<C-w>><CR>", opts)
 keymap("n", "<S-Down>",  "<C-w>-<CR>", opts)
 keymap("n", "<S-Up>",    "<C-w>+<CR>", opts)
 keymap("n", "<S-Right>", "<C-w><<CR>", opts)
+
+-- Terminal
+keymap("n", "<C-t>",  ":split<CR><C-w>w:resize 20<CR>:term<CR>", opts)
+
 -- Edit Config
 keymap("n", "<Leader>.",  ":<C-u>edit $HOME/dotfiles/lua<Enter>", opts)
 keymap("n", "<Leader>s.", ":<C-u>source $HOME/.config/nvim/init.lua<Enter>", opts)

@@ -22,8 +22,14 @@ local options = {
   smartindent = false,
   cindent = true,
   list = true,
-  listchars = 'tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%'
+  listchars = 'tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%',
 }
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
+
+vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('turn_off_auto_commenting', {}),
+  pattern = '*',
+  command = [[setlocal fo-=cro]]
+})
