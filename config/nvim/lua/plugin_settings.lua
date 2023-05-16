@@ -14,3 +14,5 @@ vim.g.indent_guides_guide_size = 1
 vim.cmd 'autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=237'
 vim.cmd 'autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=236'
 
+-- vim-markdown
+vim.g['vim_markdown_folding_disabled'] = 1

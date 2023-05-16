@@ -86,7 +86,7 @@ require("packer").startup(function()
   use 'prabirshrestha/asyncomplete.vim'
   use 'prabirshrestha/asyncomplete-lsp.vim'
 
-  use 'plasticboy/vim-markdown'
+  use 'preservim/vim-markdown'
   use 'digitaltoad/vim-jade'
 
   if PACKER_BOOTSTRAP then
