@@ -11,6 +11,6 @@ vim.g.indent_guides_enable_on_vim_startup = 1
 vim.g.indent_guides_auto_color = 0
 vim.g.indent_guides_start_level = 2
 vim.g.indent_guides_guide_size = 1
-vim.cmd 'autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3'
-vim.cmd 'autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4'
+vim.cmd 'autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=237'
+vim.cmd 'autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=236'
 
