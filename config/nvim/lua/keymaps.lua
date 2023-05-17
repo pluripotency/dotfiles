@@ -36,7 +36,8 @@ keymap("n", "<S-Up>",    "<C-w>+<CR>", opts)
 keymap("n", "<S-Right>", "<C-w><<CR>", opts)
 
 -- Terminal
-keymap("n", "<C-t>",  ":split<CR><C-w>w:resize 20<CR>:term<CR>", opts)
+keymap("n", "<C-t>",  ":split<CR><C-w>j:resize 20<CR>:term<CR>", opts)
+keymap("t", "<ESC>",  "<C-\\><C-n>", opts)
 
 -- Edit Config
 keymap("n", "<Leader>.",  ":<C-u>edit $HOME/dotfiles/lua<Enter>", opts)

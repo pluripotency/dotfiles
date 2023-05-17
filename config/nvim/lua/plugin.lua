@@ -40,8 +40,6 @@ require("packer").startup(function()
   use "hrsh7th/nvim-cmp"
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/vim-vsnip"
-  -- Coc
---  use({'neoclide/coc.nvim', branch = 'release'})
   -- Terminal
   use 'thinca/vim-quickrun'
   -- Color
