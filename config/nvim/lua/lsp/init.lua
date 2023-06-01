@@ -23,7 +23,7 @@ end })
 -- 2. build-in LSP function
 -- keyboard shortcut
 vim.keymap.set('n', 'K',  '<cmd>lua vim.lsp.buf.hover()<CR>')
-vim.keymap.set('n', 'gf', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+vim.keymap.set('n', 'gf', '<cmd>lua vim.lsp.buf.format({ async = true })<CR>')
 vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
 vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
 vim.keymap.set('n', 'gds', ':split | lua vim.lsp.buf.definition()<CR>')
@@ -36,9 +36,15 @@ vim.keymap.set('n', 'ge', '<cmd>lua vim.diagnostic.open_float()<CR>')
 vim.keymap.set('n', 'g]', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 vim.keymap.set('n', 'g[', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
 -- LSP handlers
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
-)
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { 
+  -- virtual_text = false,
+  update_in_insert = false,
+  virtual_text = {
+    format = function(diagnostic)
+      return string.format("%s (%s: %s)", diagnostic.message, diagnostic.source, diagnostic.code)
+    end,
+  },
+})
 -- Reference highlight
 vim.cmd [[
 set updatetime=500
