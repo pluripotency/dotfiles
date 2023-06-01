@@ -70,11 +70,11 @@ cmp.setup({
     ["<C-n>"] = cmp.mapping.select_next_item(),
     ['<C-l>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
-    ["<TAB>"] = cmp.mapping.confirm { select = true },
+    ["<CR>"] = cmp.mapping.confirm { select = true },
   }),
---  experimental = {
---    ghost_text = true,
---  },
+  experimental = {
+    ghost_text = true,
+  },
 })
 -- cmp.setup.cmdline('/', {
 --   mapping = cmp.mapping.preset.cmdline(),
