@@ -3,7 +3,7 @@ DOT_FILES = vimrc gvimrc tmux.conf
 all: nvim vim tmux
 
 nvim:
-	bash ${PWD}/nvimlua.sh
+	bash ${PWD}/nvim.sh
 
 vim: $(foreach f, $(filter vimrc gvimrc, $(DOT_FILES)), link-dot-file-$(f))
 
