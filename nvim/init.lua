@@ -1,7 +1,5 @@
 require 'plugin'
-require 'keymaps'
-require 'base'
-require 'autocmds'
+require 'core'
 require 'plugin_settings'
 require 'lsp'
 require 'colorscheme'

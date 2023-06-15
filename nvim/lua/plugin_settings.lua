@@ -19,3 +19,6 @@ vim.g['vim_markdown_folding_disabled'] = 1
 
 -- neo-tree
 vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+
+-- syslog
+vim.cmd 'autocmd BufNewFile,BufReadPost /var/log/messages*,/var/log/secure*,/var/log/*.log :set filetype=messages'
