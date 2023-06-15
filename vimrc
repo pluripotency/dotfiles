@@ -3,30 +3,19 @@ if empty(glob('$HOME/.vim/autoload/plug.vim'))
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-"if empty(glob('$HOME/.local/share/fonts/RictyDiminished-Regular-Powerline.ttf'))
-"  silent !curl -fLo $HOME/.local/share/fonts/RictyDiminished-Regular-Powerline.ttf --create-dirs 
-"    \ https://github.com/mzyy94/RictyDiminished-for-Powerline/raw/master/vim-powerline-fontpatched/RictyDiminished-Regular-Powerline.ttf
-"endif
-"if empty(glob('$HOME/.local/share/fonts/DroidSansMonoNerdFontComplete.otf'))
-"  silent !curl -fLo $HOME/.local/share/fonts/DroidSansMonoNerdFontComplete.otf --create-dirs 
-"    \ https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DroidSansMono/complete/Droid\%20Sans\%20Mono\%20Nerd\%20Font\%20Complete.otf
-"endif
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
       \| PlugInstall --sync | source $MYVIMRC
       \| endif
 
 call plug#begin('$HOME/.vim/plugged')
-" Coc
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Color
-Plug 'altercation/vim-colors-solarized'
-Plug '29decibel/codeschool-vim-theme'
 Plug 'sjl/badwolf'
+Plug 'doums/darcula'
+"Plug 'altercation/vim-colors-solarized'
 "Plug 'nelstrom/vim-blackboard'
 "Plug 'josephwecker/murphytango.vim'
 "Plug 'imarbuger/vim-vividchalk'
 "Plug 'ciaranm/inkpot'
-"Plug 'dracula/vim'
 "Plug 'ayu-theme/ayu-vim'
 " NerdTree
 Plug 'scrooloose/nerdtree'
@@ -43,8 +32,7 @@ Plug 'gregsexton/gitv'
 Plug 'majutsushi/tagbar'
 " for indent
 Plug 'nathanaelkane/vim-indent-guides'
-" lightline
-"Plug 'itchyny/lightline.vim'
+" airline
 Plug 'vim-airline/vim-airline'
 " sudo.vim
 Plug 'vim-scripts/sudo.vim'
@@ -53,42 +41,20 @@ Plug 'vim-scripts/vim-auto-save'
 Plug 'tyru/caw.vim'
 Plug 'tpope/vim-surround'
 Plug 'terryma/vim-multiple-cursors'
-" rust
-Plug 'rust-lang/rust.vim'
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 Plug 'plasticboy/vim-markdown'
 Plug 'digitaltoad/vim-jade'
 call plug#end()
 
-if executable('rls')
-  au User lsp_setup call lsp#register_server({
-        \ 'name': 'rls',
-        \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
-        \ 'whiitelist': ['rust'],
-        \ })
-endif
-
 filetype plugin indent on
 syntax enable
-
-if executable('/msys2.exe')
-  let &t_ti.="\e[1 q"
-  let &t_SI.="\e[5 q"
-  let &t_EI.="\e[1 q"
-  let &t_te.="\e[0 q"
-endif
 
 " map Leader to space key
 let mapleader = "\<Space>"
 
+" NERDTree
 nmap <Leader>\ :NERDTreeToggle<CR>
 nmap <Leader>n :NERDTreeToggle<CR>
-" this is needed for nvim: https://github.com/preservim/nerdtree/issues/1321
-let g:NERDTreeMinimalMenu = 1
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
@@ -103,26 +69,12 @@ if !has('gui_running')
   set t_Co=256
 endif
 
+" vimrc
 nnoremap <Leader>. :<C-u>edit $HOME/.vimrc<Enter>
 nnoremap <Leader>s. :<C-u>source $HOME/.vimrc<Enter>
-nmap <Leader>t :TagbarToggle<CR>
-
-" caw
-" For comment out
-nmap <Leader>/ <plug>(caw:i:toggle)
-vmap <Leader>/ <plug>(caw:i:toggle)
-nmap <C-\> <plug>(caw:i:toggle)
-vmap <C-\> <plug>(caw:i:toggle)
-
-autocmd BufNewFile,BufReadPost /var/log/messages*,/var/log/secure*,/var/log/    *.log :set filetype=messages
-
 
 set number
 set noswapfile
-"set guifont=DroidSansMono\ Nerd\ Font\ 12
-"set guifontwide=DroidSansMono\ Nerd\ Font\ 12
-"set gfn=Ricty\ Discord\ for\ PowerLine\ Regular\ 12
-"set gfn=RictyDiminished-Regular-Powerline
 set backspace=indent,start,eol
 set ignorecase
 set smartcase
@@ -139,10 +91,20 @@ set autoindent
 set nosmartindent
 set cindent
 
-" for jedi
-" command! -nargs=0 JediRename :call jedi#rename()
-" let g:jedi#rename_command = ""
-" let g:jedi#pytdoc ="k"
+set list
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+
+
+" tagbar
+nmap <Leader>t :TagbarToggle<CR>
+
+" caw comment out keymapping
+nmap <Leader>/ <plug>(caw:i:toggle)
+vmap <Leader>/ <plug>(caw:i:toggle)
+nmap <C-\> <plug>(caw:i:toggle)
+vmap <C-\> <plug>(caw:i:toggle)
+" disable auto-commentout :help fo-table
+autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
 " for vim-indent-guides
 let g:indent_guides_auto_color = 0
@@ -169,20 +131,17 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline_powerline_fonts = 1
 
-set list
-set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
-
 " Ctrl + hjkl でウィンドウ間を移動
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" Shift + 矢印でウィンドウサイズを変更
-nnoremap <S-Left>  <C-w><<CR>
-nnoremap <S-Right> <C-w>><CR>
-nnoremap <S-Up>    <C-w>-<CR>
-nnoremap <S-Down>  <C-w>+<CR>
+" Ctrl + 矢印でウィンドウサイズを変更
+nnoremap <C-Left>  <C-w><<CR>
+nnoremap <C-Right> <C-w>><CR>
+nnoremap <C-Up>    <C-w>-<CR>
+nnoremap <C-Down>  <C-w>+<CR>
 
 "inoremap { {}<LEFT>
 "inoremap [ []<LEFT>
@@ -195,10 +154,21 @@ vnoremap ( "zdi(<C-R>z)<ESC>
 vnoremap " "zdi"<C-R>z"<ESC>
 vnoremap ' "zdi'<C-R>z'<ESC>
 
-"colorscheme blue
-"colorscheme codeschool
 colorscheme badwolf
+"colorscheme darcula
+"colorscheme blue
 "colorscheme elflord
 "colorscheme peachpuff
 "colorscheme solarized
 "set background=dark
+
+" msys2
+if executable('/msys2.exe')
+  let &t_ti.="\e[1 q"
+  let &t_SI.="\e[5 q"
+  let &t_EI.="\e[1 q"
+  let &t_te.="\e[0 q"
+endif
+
+" /var/log/messages
+autocmd BufNewFile,BufReadPost /var/log/messages*,/var/log/secure*,/var/log/    *.log :set filetype=messages
