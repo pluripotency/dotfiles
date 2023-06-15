@@ -43,10 +43,10 @@ require("packer").startup(function()
   -- Terminal
   use 'thinca/vim-quickrun'
   -- Color
-  use 'doums/darcula'
-  use 'altercation/vim-colors-solarized'
   use 'sjl/badwolf'
+  use 'doums/darcula'
   use 'folke/tokyonight.nvim'
+  --use 'altercation/vim-colors-solarized'
   --use '29decibel/codeschool-vim-theme'
   --use 'nelstrom/vim-blackboard'
   --use 'josephwecker/murphytango.vim'

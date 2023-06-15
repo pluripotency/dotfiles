@@ -26,14 +26,14 @@ keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
+-- Change Window Size
+keymap("n", "<C-Left>",  "<C-w>><CR>", opts)
+keymap("n", "<C-Down>",  "<C-w>-<CR>", opts)
+keymap("n", "<C-Up>",    "<C-w>+<CR>", opts)
+keymap("n", "<C-Right>", "<C-w><<CR>", opts)
 -- Split Window
 keymap("n", "ss",  ":split<Return><C-w>w", opts)
 keymap("n", "sv",  ":vsplit<Return><C-w>w", opts)
--- Change Window Size
-keymap("n", "<S-Left>",  "<C-w>><CR>", opts)
-keymap("n", "<S-Down>",  "<C-w>-<CR>", opts)
-keymap("n", "<S-Up>",    "<C-w>+<CR>", opts)
-keymap("n", "<S-Right>", "<C-w><<CR>", opts)
 
 -- Terminal
 keymap("n", "<C-t>",  ":split<CR><C-w>j:resize 20<CR>:term<CR>", opts)
