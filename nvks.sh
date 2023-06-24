@@ -8,4 +8,5 @@ case ${1} in
 esac
 
 echo "Create ${NVCONF_DIR}"
-git clone https://github.com/nvim-lua/kickstart.nvim.git ~/.config/nvim --depth 1
+#git clone https://github.com/nvim-lua/kickstart.nvim.git ~/.config/nvim --depth 1
+cp -rf ${CURRENT}/nvks ${NVCONF_DIR}
