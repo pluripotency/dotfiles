@@ -43,6 +43,7 @@ require("packer").startup(function()
   -- Terminal
   use 'thinca/vim-quickrun'
   -- Color
+  use 'navarasu/onedark.nvim'
   use 'sjl/badwolf'
   use 'doums/darcula'
   use 'folke/tokyonight.nvim'

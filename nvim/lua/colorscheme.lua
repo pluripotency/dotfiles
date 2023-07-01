@@ -6,7 +6,8 @@ if not status_ok then
   return
 end
 --vim.cmd 'colorscheme darcula'
-vim.cmd 'colorscheme badwolf'
+vim.cmd 'colorscheme onedark'
+--vim.cmd 'colorscheme badwolf'
 --vim.cmd 'colorscheme tokyonight'
 --vim.cmd 'colorscheme solarized'
 --vim.cmd 'set background=dark'
