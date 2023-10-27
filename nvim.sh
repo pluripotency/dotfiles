@@ -11,8 +11,8 @@ case ${1} in
   "clean" ) exit;;
 esac
 
-echo "Create ${NVCONF_DIR}"
-cp -rf ${CURRENT}/nvim ${CONF_DIR}
+echo "Linking ${NVCONF_DIR}"
+ln -s ${CURRENT}/nvim ${CONF_DIR}
 
 # alias
 BASHRC=$HOME/.bashrc

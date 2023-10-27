@@ -9,4 +9,4 @@ esac
 
 echo "Create ${NVCONF_DIR}"
 #git clone https://github.com/nvim-lua/kickstart.nvim.git ~/.config/nvim --depth 1
-cp -rf ${CURRENT}/nvks ${NVCONF_DIR}
+ln -s ${CURRENT}/nvks ${NVCONF_DIR}

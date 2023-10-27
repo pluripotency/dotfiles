@@ -1,4 +1,4 @@
-local status_ok, packer = pcall(vim.cmd, "colorschem darcula")
+local status_ok, packer = pcall(vim.cmd, "colorscheme darcula")
 if not status_ok then
 --  vim.cmd 'colorscheme elflord'
   vim.cmd 'colorscheme darkblue'
@@ -6,9 +6,9 @@ if not status_ok then
   return
 end
 --vim.cmd 'colorscheme darcula'
-vim.cmd 'colorscheme onedark'
+--vim.cmd 'colorscheme onedark'
 --vim.cmd 'colorscheme badwolf'
---vim.cmd 'colorscheme tokyonight'
+vim.cmd 'colorscheme tokyonight'
 --vim.cmd 'colorscheme solarized'
 --vim.cmd 'set background=dark'
 

@@ -64,10 +64,9 @@ set encoding=utf-8
 "if has('windows')
 "  set encoding=cp932
 "endif
-
-if !has('gui_running')
-  set t_Co=256
-endif
+"if !has('gui_running')
+"  set t_Co=256
+"endif
 
 " vimrc
 nnoremap <Leader>. :<C-u>edit $HOME/.vimrc<Enter>
