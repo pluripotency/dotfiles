@@ -56,6 +56,7 @@ for k, v in pairs(options) do
 end
 
 return {
+  'kchmck/vim-coffee-script',
   'doums/darcula',
   'folke/tokyonight.nvim',
   {
