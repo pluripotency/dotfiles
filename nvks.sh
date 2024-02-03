@@ -1,4 +1,4 @@
 #! /bin/sh
 CURRENT=$(cd $(dirname $0);pwd)
-${CURRENT}/nvim.sh noops nvks
+${CURRENT}/nvim_setup.sh nvks ${1}
 
