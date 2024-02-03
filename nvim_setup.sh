@@ -21,8 +21,11 @@ case ${1} in
   "nvmin" ) 
     SRCDIR=nvmin
     ;;
-  *)
+  "nvim" ) 
     SRCDIR=nvim
+    ;;
+  *)
+    SRCDIR=nvmin
     ;;
 esac
 
