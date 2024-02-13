@@ -1,9 +1,6 @@
 DOT_FILES = vimrc gvimrc tmux.conf 
 
-all: neovim vim tmux
-
-neovim: nvim.sh
-	bash ${PWD}/nvks.sh
+all: vim tmux
 
 vim: $(foreach f, $(filter vimrc gvimrc, $(DOT_FILES)), link-dot-file-$(f))
 
@@ -11,7 +8,6 @@ tmux: $(foreach f, $(filter tmux%, $(DOT_FILES)), link-dot-file-$(f))
 
 .PHONY: clean
 clean: $(foreach f, $(DOT_FILES), unlink-dot-file-$(f))
-	bash ${PWD}/nvks.sh clean
   
 link-dot-file-%: %
 	@echo "Create Symlink $< => $(HOME)/.$<"

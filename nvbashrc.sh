@@ -2,19 +2,26 @@
 CURRENT=$(cd $(dirname $0);pwd)
 BASHRC=$HOME/.bashrc
 NVIM_LINK="alias nvim='/usr/local/bin/nvim.appimage'"
-VIM_LINK="alias vim='/usr/local/bin/nvim.appimage'"
+VIM_LINK="alias vim='nvim'"
 
 case ${1} in
   "clean" ) 
-    echo "Deleting .bashrc entry for nvim..."
-    sed -i "/alias nvim=/d" ${BASHRC}
-    sed -i "/alias vim=/d" ${BASHRC}
+    for i in nvim vim nvks nvmin
+    do
+      echo "Deleting ${i} entry in bashrc..."
+      sed -i "/alias ${i}=/d" ${BASHRC}
+    done
+    exit
+    ;;
+  nv* )
+    echo "Adding ${1} entry to .bashrc..."
+    LINK="alias ${1}='NVIM_APPNAME=${1} nvim'"
+    grep -q "${LINK}" ${BASHRC} || echo "${LINK}" >> ${BASHRC} 
     exit
     ;;
 esac
 
-echo "Setting .bashrc entry for nvim..."
-# add alias
+echo "Adding nvim/vim entry to .bashrc..."
 grep -q "${NVIM_LINK}" ${BASHRC} || echo "${NVIM_LINK}" >> ${BASHRC} 
 grep -q "${VIM_LINK}" ${BASHRC} || echo "# ${VIM_LINK}" >> ${BASHRC} 
 
