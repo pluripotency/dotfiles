@@ -77,6 +77,19 @@ require('lazy').setup({
   {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
+    -- config = function()
+    --   vim.api.nvim_create_autocmd('FileType', {
+    --     pattern = 'coffee',
+    --     callback = function()
+    --       vim.lsp.start({
+    --         name = 'coffeesense-language-server',
+    --         capabilities = vim.lsp.protocol.make_client_capabilities(),
+    --         cmd = { 'coffeesense-language-server' },
+    --         root_dir = vim.fs.dirname(vim.fs.find({ '.git' }, { upward = true })[1]),
+    --       })
+    --     end,
+    --   })
+    -- end,
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
       { 'williamboman/mason.nvim', config = true },
@@ -453,11 +466,14 @@ mason_lspconfig.setup {
 
 mason_lspconfig.setup_handlers {
   function(server_name)
-    require('lspconfig')[server_name].setup {
+    local lspconfig = require('lspconfig')
+    -- require('lspconfig')[server_name].setup {
+    lspconfig[server_name].setup {
       capabilities = capabilities,
       on_attach = on_attach,
       settings = servers[server_name],
     }
+    lspconfig.coffeesense.setup {}
   end,
 }
 
