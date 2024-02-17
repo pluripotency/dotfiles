@@ -24,6 +24,22 @@ return {
   config = function()
     local dap = require 'dap'
     local dapui = require 'dapui'
+    dap.adapters.python = {
+      type = 'executable';
+      command = os.getenv('HOME') .. '/.virtualenv/v3/bin/python';
+      args = { '-m', 'debugpy.adapter' };
+    }
+    dap.configurations.python = {
+      {
+        type = 'python';
+        request = 'launch';
+        name = 'Launch file';
+        program = "${file}";
+        pythonPath = function()
+          return '/home/worker/.virtualenv/v3/bin/python'
+        end;
+      },
+    }
 
     require('mason-nvim-dap').setup {
       -- Makes a best effort to setup the various debuggers with

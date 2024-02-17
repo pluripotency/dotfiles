@@ -6,14 +6,20 @@ VIM_LINK="alias vim='nvim'"
 
 case ${1} in
   "clean" ) 
-    for i in nvim vim nvks nvmin
+    for i in nvim vim nvks nmin lvim
     do
       echo "Deleting ${i} entry in bashrc..."
       sed -i "/alias ${i}=/d" ${BASHRC}
     done
     exit
     ;;
-  nv* )
+  lvim )
+    echo "Adding ${1} entry to .bashrc..."
+    LINK="alias ${1}='NVIM_APPNAME=${1} nvim'"
+    grep -q "${LINK}" ${BASHRC} || echo "${LINK}" >> ${BASHRC} 
+    exit
+    ;;
+  n* )
     echo "Adding ${1} entry to .bashrc..."
     LINK="alias ${1}='NVIM_APPNAME=${1} nvim'"
     grep -q "${LINK}" ${BASHRC} || echo "${LINK}" >> ${BASHRC} 

@@ -46,6 +46,7 @@ vim.g.maplocalleader = ' '
 --    `:help lazy.nvim.txt` for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
+  print('Setting Up Lazy.nvim')
   vim.fn.system {
     'git',
     'clone',
@@ -70,7 +71,7 @@ require('lazy').setup({
   'tpope/vim-rhubarb',
 
   -- Detect tabstop and shiftwidth automatically
---  'tpope/vim-sleuth',
+  --  'tpope/vim-sleuth',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -97,7 +98,7 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+      { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -121,7 +122,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',          opts = {} },
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -135,20 +136,12 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
       on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
+        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk,
+          { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
         vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
         vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
       end,
     },
-  },
-
-  {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
   },
 
   {
@@ -175,7 +168,7 @@ require('lazy').setup({
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim',         opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
   { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
@@ -216,12 +209,63 @@ require('lazy').setup({
   { import = 'custom.plugins' },
 }, {})
 
+-- My Setting Options
+
+-- Better Window Navigation
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = '' })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = '' })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = '' })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = '' })
+-- Change Window Size
+vim.keymap.set("n", "<C-Left>",  "<C-w>><CR>", { desc = '' })
+vim.keymap.set("n", "<C-Down>",  "<C-w>-<CR>", { desc = '' })
+vim.keymap.set("n", "<C-Up>",    "<C-w>+<CR>", { desc = '' })
+vim.keymap.set("n", "<C-Right>", "<C-w><<CR>", { desc = '' })
+-- Split Window
+vim.keymap.set("n", "ss",  ":split<Return><C-w>w", { desc = '' })
+vim.keymap.set("n", "sv",  ":vsplit<Return><C-w>w", { desc = '' })
+-- Terminal
+vim.keymap.set("n", "<C-t>",  ":split<CR><C-w>j:resize 20<CR>:term<CR>", { desc = '' })
+vim.keymap.set("t", "<ESC>",  "<C-\\><C-n>", { desc = '' })
+
+vim.g.python3_host_prog = '/home/worker/.virtualenv/v3/bin/python'
+vim.g.python_host_prog = '/home/worker/.virtualenv/v3/bin/python'
+
+vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('turn_off_auto_commenting', {}),
+  pattern = '*',
+  command = [[setlocal fo-=cro]]
+})
+
+vim.o.encoding = "utf-8"
+-- vim.o.fileencoding = "utf-8"
+vim.o.number = true
+vim.o.swapfile = false
+vim.o.backspace = "indent,start,eol"
+vim.o.ignorecase = true
+vim.o.smartcase = true
+vim.o.hlsearch = true
+vim.o.showcmd = true
+vim.o.pastetoggle = "<F4>"
+vim.o.tabstop = 2
+vim.o.softtabstop = 2
+vim.o.shiftwidth = 2
+vim.o.smarttab = true
+vim.o.expandtab = true
+vim.o.autoindent = true
+vim.o.smartindent = false
+vim.o.cindent = true
+vim.o.list = true
+vim.o.listchars = 'tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%'
+
+-- End My Setting Options
+
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
 
 -- Set highlight on search
-vim.o.hlsearch = false
+-- vim.o.hlsearch = false
 
 -- Make line numbers default
 vim.wo.number = true
@@ -241,8 +285,8 @@ vim.o.breakindent = true
 vim.o.undofile = true
 
 -- Case-insensitive searching UNLESS \C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
+-- vim.o.ignorecase = true
+-- vim.o.smartcase = true
 
 -- Keep signcolumn on by default
 vim.wo.signcolumn = 'yes'

@@ -5,15 +5,13 @@ if [ ! -d ${CONF_DIR} ];then
   mkdir -p ${CONF_DIR}
 fi
 
-declare -a NVLIST=("nvmin" "nvks" "lvim")
+declare -a NVLIST=("nmin" "nvks" "lvim")
 case ${1} in
   "clean" ) 
     sh ${CURRENT}/nvbashrc.sh clean
     for NV in "${NVLIST[@]}"
     do
-      DST=${CONF_DIR}/${NV}
-      echo "Uninking ${DST}"
-      unlink ${DST}
+      sh ${CURRENT}/nvclean.sh ${NV}
     done
     exit
     ;;
