@@ -78,19 +78,32 @@ require('lazy').setup({
   {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
-    -- config = function()
-    --   vim.api.nvim_create_autocmd('FileType', {
-    --     pattern = 'coffee',
-    --     callback = function()
-    --       vim.lsp.start({
-    --         name = 'coffeesense-language-server',
-    --         capabilities = vim.lsp.protocol.make_client_capabilities(),
-    --         cmd = { 'coffeesense-language-server' },
-    --         root_dir = vim.fs.dirname(vim.fs.find({ '.git' }, { upward = true })[1]),
-    --       })
-    --     end,
-    --   })
-    -- end,
+    config = function()
+      local lspconfig = require('lspconfig')
+      lspconfig.coffeesense.setup {}
+      -- lspconfig.pylsp.setup {
+      --   settings = {
+      --     pylsp = {
+      --       plugins = {
+      --         pycodestyle = {
+      --           ignore = {'E501'}
+      --         }
+      --       }
+      --     }
+      --   }
+      -- }
+      -- vim.api.nvim_create_autocmd('FileType', {
+      --   pattern = 'coffee',
+      --   callback = function()
+      --     vim.lsp.start({
+      --       name = 'coffeesense-language-server',
+      --       capabilities = vim.lsp.protocol.make_client_capabilities(),
+      --       cmd = { 'coffeesense-language-server' },
+      --       root_dir = vim.fs.dirname(vim.fs.find({ '.git' }, { upward = true })[1]),
+      --     })
+      --   end,
+      -- })
+    end,
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
       { 'williamboman/mason.nvim', config = true },
@@ -151,7 +164,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
+        theme = 'auto',
         component_separators = '|',
         section_separators = '',
       },
@@ -517,7 +530,7 @@ mason_lspconfig.setup_handlers {
       on_attach = on_attach,
       settings = servers[server_name],
     }
-    lspconfig.coffeesense.setup {}
+    -- lspconfig.coffeesense.setup {}
   end,
 }
 
