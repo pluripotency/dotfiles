@@ -34,11 +34,13 @@ return {
     end,
   },
   {
-  'vim-scripts/vim-auto-save',
-    config = function ()
-      -- auto save
-      vim.g.auto_save = 1
-    end,
+    'okuuva/auto-save.nvim',
+    triger_events= {
+      immediae_save = { "BufLeave", "FocusLost" },
+      defer_save = { "InsertLeave" },
+      cancel_defered_save ={"InsertEnter"},
+    },
+    debounce_delay = 1000,
   },
   {
     "nvim-tree/nvim-tree.lua",
