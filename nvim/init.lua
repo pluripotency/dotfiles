@@ -1,5 +1,2 @@
-require 'plugin'
-require 'core'
-require 'plugin_settings'
-require 'lsp'
-require 'colorscheme'
+require 'kickstart'
+require 'mine'

@@ -16,7 +16,7 @@ return {
     end,
   },
   'vim-scripts/sudo.vim',
-  'tpope/vim-surround',
+  -- 'tpope/vim-surround',
    -- auto bracket completion
   {
     'windwp/nvim-autopairs',
@@ -34,14 +34,23 @@ return {
     end,
   },
   {
-    'okuuva/auto-save.nvim',
-    triger_events= {
-      immediae_save = { "BufLeave", "FocusLost" },
-      defer_save = { "InsertLeave" },
-      cancel_defered_save ={"InsertEnter"},
-    },
-    debounce_delay = 1000,
+    'pocco81/auto-save.nvim',
   },
+  -- {
+  --   'okuuva/auto-save.nvim',
+  --   cmd = "ASToggle", -- optional for lazy loading on command
+  --   event = { "InsertLeave", "TextChanged" }, -- optional for lazy loading on trigger events
+  --   opts = {
+  --     -- your config goes here
+  --     -- or just leave it empty :)
+  --   },
+  --   -- triger_events= {
+  --   --   immediae_save = { "BufLeave", "FocusLost" },
+  --   --   defer_save = { "InsertLeave" },
+  --   --   cancel_defered_save ={"InsertEnter"},
+  --   -- },
+  --   -- debounce_delay = 1000,
+  -- },
   {
     "nvim-tree/nvim-tree.lua",
     dependencies = {
