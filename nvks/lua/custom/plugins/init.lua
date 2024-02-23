@@ -34,8 +34,15 @@ return {
     end,
   },
   {
-    'pocco81/auto-save.nvim',
+  'vim-scripts/vim-auto-save',
+    config = function ()
+      -- auto save
+      vim.g.auto_save = 1
+    end,
   },
+  -- {
+  --   'pocco81/auto-save.nvim',
+  -- },
   -- {
   --   'okuuva/auto-save.nvim',
   --   cmd = "ASToggle", -- optional for lazy loading on command
@@ -64,6 +71,7 @@ return {
         }
       }
       vim.keymap.set('n', '<leader>n', ":NvimTreeToggle<CR>", { desc = '[N]vimTreeToggle' })
+      vim.o.autochdir = true
     end,
   }
   --{

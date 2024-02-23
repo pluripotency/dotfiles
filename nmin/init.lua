@@ -104,7 +104,7 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 local options = {
   encoding = "utf-8",
-  fileencoding = "utf-8",
+  -- fileencoding = "utf-8",
 -- Make line numbers default
   number = true,
   swapfile = false,
