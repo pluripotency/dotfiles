@@ -23,16 +23,16 @@ return {
     event = "InsertEnter",
     opts = {}
   },
-  {
-    'tyru/caw.vim',
-    config = function ()
-      -- caw for comment out <C-_> means <C-/>
-      vim.keymap.set("n", "<C-_>",     "<plug>(caw:i:toggle)", { desc = '' })
-      vim.keymap.set("v", "<C-_>",     "<plug>(caw:i:toggle)", { desc = '' })
-      vim.keymap.set("n", "<Leader>/", "<plug>(caw:i:toggle)", { desc = '' })
-      vim.keymap.set("v", "<Leader>/", "<plug>(caw:i:toggle)", { desc = '' })
-    end,
-  },
+  -- {
+  --   'tyru/caw.vim',
+  --   config = function ()
+  --     -- caw for comment out <C-_> means <C-/>
+  --     vim.keymap.set("n", "<C-_>",     "<plug>(caw:i:toggle)", { desc = '' })
+  --     vim.keymap.set("v", "<C-_>",     "<plug>(caw:i:toggle)", { desc = '' })
+  --     vim.keymap.set("n", "<Leader>/", "<plug>(caw:i:toggle)", { desc = '' })
+  --     vim.keymap.set("v", "<Leader>/", "<plug>(caw:i:toggle)", { desc = '' })
+  --   end,
+  -- },
   {
     "jose-elias-alvarez/null-ls.nvim",
     ft = "go",

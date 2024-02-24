@@ -81,19 +81,6 @@ require('lazy').setup({
     config = function()
       local lspconfig = require('lspconfig')
       lspconfig.coffeesense.setup {}
-      lspconfig.gopls.setup {
-        -- cmd = {"gopls"},
-        -- filetypes = { "go", "gomod", "gowork", "gotmpl" },
-        settings = {
-          gopls = {
-            completeUnimported = true,
-            usePlaceholders = true,
-            analyses = {
-              unusedparams = true,
-            }
-          }
-        }
-      }
       -- lspconfig.pylsp.setup {
       --   settings = {
       --     pylsp = {
@@ -506,8 +493,15 @@ end
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
-  -- clangd = {},
   -- gopls = {},
+  gopls = {
+    completeUnimported = true,
+    usePlaceholders = true,
+    analyses = {
+      unusedparams = true,
+    }
+  },
+  -- clangd = {},
   -- pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
