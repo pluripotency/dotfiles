@@ -81,6 +81,19 @@ require('lazy').setup({
     config = function()
       local lspconfig = require('lspconfig')
       lspconfig.coffeesense.setup {}
+      lspconfig.gopls.setup {
+        -- cmd = {"gopls"},
+        -- filetypes = { "go", "gomod", "gowork", "gotmpl" },
+        settings = {
+          gopls = {
+            completeUnimported = true,
+            usePlaceholders = true,
+            analyses = {
+              unusedparams = true,
+            }
+          }
+        }
+      }
       -- lspconfig.pylsp.setup {
       --   settings = {
       --     pylsp = {

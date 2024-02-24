@@ -34,12 +34,19 @@ return {
     end,
   },
   {
-  'vim-scripts/vim-auto-save',
-    config = function ()
-      -- auto save
-      vim.g.auto_save = 1
+    "jose-elias-alvarez/null-ls.nvim",
+    ft = "go",
+    opts = function()
+      return require "custom.configs.null-ls"
     end,
   },
+  -- {
+  -- 'vim-scripts/vim-auto-save',
+  --   config = function ()
+  --     -- auto save
+  --     vim.g.auto_save = 1
+  --   end,
+  -- },
   -- {
   --   'pocco81/auto-save.nvim',
   -- },
@@ -71,7 +78,7 @@ return {
         }
       }
       vim.keymap.set('n', '<leader>n', ":NvimTreeToggle<CR>", { desc = '[N]vimTreeToggle' })
-      vim.o.autochdir = true
+      -- vim.o.autochdir = true
     end,
   }
   --{

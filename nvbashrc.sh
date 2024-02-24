@@ -13,17 +13,13 @@ case ${1} in
     done
     exit
     ;;
-  lvim )
-    echo "Adding ${1} entry to .bashrc..."
-    LINK="alias ${1}='NVIM_APPNAME=${1} nvim'"
-    grep -q "${LINK}" ${BASHRC} || echo "${LINK}" >> ${BASHRC} 
-    exit
-    ;;
-  n* )
-    echo "Adding ${1} entry to .bashrc..."
-    LINK="alias ${1}='NVIM_APPNAME=${1} nvim'"
-    grep -q "${LINK}" ${BASHRC} || echo "${LINK}" >> ${BASHRC} 
-    exit
+  * )
+    if [ -d ${CURRENT}/${1} ]; then
+      echo "Adding ${1} entry to .bashrc..."
+      LINK="alias ${1}='NVIM_APPNAME=${1} nvim'"
+      grep -q "${LINK}" ${BASHRC} || echo "${LINK}" >> ${BASHRC} 
+      exit
+    fi
     ;;
 esac
 
