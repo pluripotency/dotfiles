@@ -15,6 +15,7 @@ return {
     	vim.cmd.colorscheme 'darcula'
     end,
   },
+  'digitaltoad/vim-pug',
   'vim-scripts/sudo.vim',
   -- 'tpope/vim-surround',
    -- auto bracket completion
@@ -40,13 +41,13 @@ return {
       return require "custom.configs.null-ls"
     end,
   },
-  -- {
-  -- 'vim-scripts/vim-auto-save',
-  --   config = function ()
-  --     -- auto save
-  --     vim.g.auto_save = 1
-  --   end,
-  -- },
+  {
+  'vim-scripts/vim-auto-save',
+    config = function ()
+      -- auto save
+      vim.g.auto_save = 1
+    end,
+  },
   -- {
   --   'pocco81/auto-save.nvim',
   -- },
