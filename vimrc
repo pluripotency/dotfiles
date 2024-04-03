@@ -99,12 +99,14 @@ vmap <C-\> <plug>(caw:i:toggle)
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
 " for vim-indent-guides
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_guide_size= 1
-let g:indent_guides_start_level = 2
-"let g:indent_guides_auto_color = 0
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red ctermbg=3
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+if has('t_Co==256')
+  let g:indent_guides_enable_on_vim_startup = 1
+  let g:indent_guides_guide_size= 1
+  let g:indent_guides_start_level = 2
+"  let g:indent_guides_auto_color = 0
+"  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red ctermbg=3
+"  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+endif
 
 " for vim-auto-save
 let g:auto_save = 1
