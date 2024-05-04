@@ -103,6 +103,13 @@ require('lazy').setup({
       --     })
       --   end,
       -- })
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = '*.tmpl.html',
+        callback = function()
+          local buf = vim.api.nvim_get_current_buf()
+          vim.api.nvim_buf_set_option(buf, "filetype", "gotmpl")
+        end,
+      })
     end,
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim

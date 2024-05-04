@@ -40,31 +40,31 @@ return {
       return require "custom.configs.null-ls"
     end,
   },
+--  {
+--  'vim-scripts/vim-auto-save',
+--    config = function ()
+--      -- auto save
+--      vim.g.auto_save = 1
+--    end,
+--  },
+--  {
+--    'pocco81/auto-save.nvim',
+--  },
   {
-  'vim-scripts/vim-auto-save',
-    config = function ()
-      -- auto save
-      vim.g.auto_save = 1
-    end,
+    'okuuva/auto-save.nvim',
+    cmd = "ASToggle", -- optional for lazy loading on command
+    event = { "InsertLeave", "TextChanged" }, -- optional for lazy loading on trigger events
+    opts = {
+      triger_events= {
+        immediae_save = { "BufLeave", "FocusLost" },
+        defer_save = { "InsertLeave" },
+        cancel_defered_save ={"InsertEnter"},
+      },
+      debounce_delay = 1000,
+      -- your config goes here
+      -- or just leave it empty :)
+    },
   },
-  -- {
-  --   'pocco81/auto-save.nvim',
-  -- },
-  -- {
-  --   'okuuva/auto-save.nvim',
-  --   cmd = "ASToggle", -- optional for lazy loading on command
-  --   event = { "InsertLeave", "TextChanged" }, -- optional for lazy loading on trigger events
-  --   opts = {
-  --     -- your config goes here
-  --     -- or just leave it empty :)
-  --   },
-  --   -- triger_events= {
-  --   --   immediae_save = { "BufLeave", "FocusLost" },
-  --   --   defer_save = { "InsertLeave" },
-  --   --   cancel_defered_save ={"InsertEnter"},
-  --   -- },
-  --   -- debounce_delay = 1000,
-  -- },
   {
     "nvim-tree/nvim-tree.lua",
     dependencies = {
