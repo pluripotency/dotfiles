@@ -23,11 +23,13 @@ Plug 'scrooloose/nerdtree'
 Plug 'kchmck/vim-coffee-script'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'rust-lang/rust.vim'
+Plug 'plasticboy/vim-markdown'
+Plug 'digitaltoad/vim-pug'
+Plug 'chrisbra/csv.vim'
 " pyflakes
 Plug 'mitechie/pyflakes-pathogen'
 " git
 Plug 'tpope/vim-fugitive'
-Plug 'gregsexton/gitv'
 " Tagbar
 Plug 'majutsushi/tagbar'
 " for indent
@@ -42,8 +44,6 @@ Plug 'tyru/caw.vim'
 Plug 'tpope/vim-surround'
 Plug 'terryma/vim-multiple-cursors'
 
-Plug 'plasticboy/vim-markdown'
-Plug 'digitaltoad/vim-jade'
 call plug#end()
 
 filetype plugin indent on
@@ -61,14 +61,7 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 
 scriptencoding utf-8
 set encoding=utf-8
-"if has('windows')
-"  set encoding=cp932
-"endif
-"if !has('gui_running')
-"  set t_Co=256
-"endif
 
-" vimrc
 nnoremap <Leader>. :<C-u>edit $HOME/.vimrc<Enter>
 nnoremap <Leader>s. :<C-u>source $HOME/.vimrc<Enter>
 
@@ -106,23 +99,19 @@ vmap <C-\> <plug>(caw:i:toggle)
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
 " for vim-indent-guides
-let g:indent_guides_auto_color = 0
-let g:indent_guides_start_level = 2
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=red ctermbg=3
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+if has('t_Co==256')
+  let g:indent_guides_enable_on_vim_startup = 1
+  let g:indent_guides_guide_size= 1
+  let g:indent_guides_start_level = 2
+"  let g:indent_guides_auto_color = 0
+"  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red ctermbg=3
+"  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+endif
 
 " for vim-auto-save
 let g:auto_save = 1
-
 " for markdown
 let g:vim_markdown_folding_disabled=1
-
-" for previm
-augroup PrevimSettings
-  autocmd!
-  autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-augroup END
-
 "Airline
 "set laststatus=2
 "set showtabline=2 " 常にタブラインを表示
@@ -135,7 +124,6 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-
 " Ctrl + 矢印でウィンドウサイズを変更
 nnoremap <C-Left>  <C-w><<CR>
 nnoremap <C-Right> <C-w>><CR>
@@ -168,6 +156,9 @@ if executable('/msys2.exe')
   let &t_EI.="\e[1 q"
   let &t_te.="\e[0 q"
 endif
+"if has('windows')
+"  set encoding=cp932
+"endif
 
 " /var/log/messages
 autocmd BufNewFile,BufReadPost /var/log/messages*,/var/log/secure*,/var/log/    *.log :set filetype=messages

@@ -15,6 +15,7 @@ return {
     	vim.cmd.colorscheme 'darcula'
     end,
   },
+  'digitaltoad/vim-pug',
   'vim-scripts/sudo.vim',
   -- 'tpope/vim-surround',
    -- auto bracket completion
