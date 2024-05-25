@@ -4,8 +4,10 @@
 -- See the kickstart.nvim README for more information
 
 return {
-  'navarasu/onedark.nvim',
   'kchmck/vim-coffee-script',
+  'digitaltoad/vim-pug',
+
+  'navarasu/onedark.nvim',
   'doums/darcula',
   'folke/tokyonight.nvim',
   {
@@ -15,7 +17,6 @@ return {
     	vim.cmd.colorscheme 'darcula'
     end,
   },
-  'digitaltoad/vim-pug',
   'vim-scripts/sudo.vim',
   -- 'tpope/vim-surround',
    -- auto bracket completion

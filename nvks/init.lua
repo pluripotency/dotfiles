@@ -238,7 +238,6 @@ require('lazy').setup({
 }, {})
 
 -- My Setting Options
-
 -- Better Window Navigation
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = '' })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = '' })
@@ -264,9 +263,7 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = '*',
   command = [[setlocal fo-=cro]]
 })
-
 vim.o.encoding = "utf-8"
--- vim.o.fileencoding = "utf-8"
 vim.o.number = true
 vim.o.swapfile = false
 vim.o.backspace = "indent,start,eol"
@@ -274,7 +271,6 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.hlsearch = true
 vim.o.showcmd = true
-vim.o.pastetoggle = "<F4>"
 vim.o.tabstop = 2
 vim.o.softtabstop = 2
 vim.o.shiftwidth = 2
@@ -283,9 +279,8 @@ vim.o.expandtab = true
 vim.o.autoindent = true
 vim.o.smartindent = false
 vim.o.cindent = true
-vim.o.list = true
+vim.o.list = false
 vim.o.listchars = 'tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%'
-
 -- End My Setting Options
 
 -- [[ Setting options ]]
@@ -525,6 +520,9 @@ local servers = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
+      diagnostics = {
+        globals = {'vim'}
+      }
     },
   },
 }
