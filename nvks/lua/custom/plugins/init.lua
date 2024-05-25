@@ -35,8 +35,11 @@ return {
     --   vim.keymap.set("v", "<Leader>/", "<plug>(caw:i:toggle)", { desc = '' })
     -- end,
   -- },
-  {
-    "jose-elias-alvarez/null-ls.nvim",
+  "nvimtools/none-ls.nvim",
+--  'jayp0521/mason-null-ls.nvim',
+   {
+    "nvimtools/none-ls.nvim",
+    -- "jose-elias-alvarez/null-ls.nvim",
     ft = "go",
     opts = function()
       return require "custom.configs.null-ls"
