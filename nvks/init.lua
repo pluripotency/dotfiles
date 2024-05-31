@@ -279,8 +279,9 @@ vim.o.expandtab = true
 vim.o.autoindent = true
 vim.o.smartindent = false
 vim.o.cindent = true
-vim.o.list = false
-vim.o.listchars = 'tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%'
+vim.o.list = true
+-- vim.o.listchars = 'tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%'
+vim.o.listchars = 'tab:»-,trail:-,extends:»,precedes:«,nbsp:%'
 -- End My Setting Options
 
 -- [[ Setting options ]]
