@@ -25,8 +25,8 @@ case ${1} in
     ;;
 esac
 
-echo "Adding nvim/vim entry to .bashrc..."
-grep -q "${NVIM_LINK}" ${BASHRC} || echo "${NVIM_LINK}" >> ${BASHRC} 
-grep -q "${VIM_LINK}" ${BASHRC} || echo "# ${VIM_LINK}" >> ${BASHRC} 
-source ${BASHRC}
+#echo "Adding nvim/vim entry to .bashrc..."
+#grep -q "${NVIM_LINK}" ${BASHRC} || echo "${NVIM_LINK}" >> ${BASHRC} 
+#grep -q "${VIM_LINK}" ${BASHRC} || echo "# ${VIM_LINK}" >> ${BASHRC} 
+#source ${BASHRC}
 
