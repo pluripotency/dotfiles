@@ -25,9 +25,21 @@ do
     DST=${CONF_DIR}/${NV}
     if [ ! -L ${DST} ] && [ ! -e ${DST} ]; then
       echo "Linking ${SRC} to ${DST}"
-      ln -s ${SRC} ${CONF_DIR}/${NV}
+      ln -s ${SRC} ${DST}
       sh ${CURRENT}/nvbashrc.sh ${NV}
     fi
   fi
 done
 
+declare -a CONFLIST=("pylintrc")
+for CF in "${CONFLIST[@]}"
+do
+  SRC=${CURRENT}/${CF}
+  if [ -f ${SRC} ]; then
+    DST=${CONF_DIR}/${CF}
+    if [ ! -L ${DST} ] && [ ! -e ${DST} ]; then
+      echo "Linking ${SRC} to ${DST}"
+      ln -s ${SRC} ${DST}
+    fi
+  fi
+done
