@@ -5,7 +5,7 @@ if [ ! -d ${CONF_DIR} ];then
   mkdir -p ${CONF_DIR}
 fi
 
-declare -a NVLIST=("nmin" "nvks" "nks" "nvchad")
+declare -a NVLIST=("nmin" "nvks" "nks" "nksb")
 case ${1} in
   "clean" ) 
     sh ${CURRENT}/nvbashrc.sh clean
