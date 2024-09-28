@@ -22,6 +22,46 @@ return {
     event = 'InsertEnter',
     opts = {},
   },
+  {
+    'ThePrimeagen/harpoon',
+    branch = 'harpoon2',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      local harpoon = require 'harpoon'
+
+      -- REQUIRED
+      harpoon:setup()
+      -- REQUIRED
+
+      vim.keymap.set('n', '<leader>a', function()
+        harpoon:list():add()
+      end, { desc = 'Add to Harpoon list' })
+      vim.keymap.set('n', '<C-e>', function()
+        harpoon.ui:toggle_quick_menu(harpoon:list())
+      end, { desc = 'Toggle Harpoon Menu' })
+
+      vim.keymap.set('n', '<leader>ha', function()
+        harpoon:list():select(1)
+      end, { desc = '1st Harpoon list' })
+      vim.keymap.set('n', '<leader>hs', function()
+        harpoon:list():select(2)
+      end, { desc = '2nd Harpoon list' })
+      vim.keymap.set('n', '<leader>hd', function()
+        harpoon:list():select(3)
+      end, { desc = '3rd Harpoon list' })
+      vim.keymap.set('n', '<leader>hf', function()
+        harpoon:list():select(4)
+      end, { desc = '4th Harpoon list' })
+
+      -- Toggle previous & next buffers stored within Harpoon list
+      vim.keymap.set('n', '<leader>hn', function()
+        harpoon:list():prev()
+      end, { desc = 'Next Harpoon list' })
+      vim.keymap.set('n', '<leader>hp', function()
+        harpoon:list():next()
+      end, { desc = 'Previous Harpoon list' })
+    end,
+  },
   -- {
   -- 'tyru/caw.vim',
   -- config = function ()
@@ -75,6 +115,11 @@ return {
     cmd = 'ASToggle', -- optional for lazy loading on command
     event = { 'InsertLeave', 'TextChanged' }, -- optional for lazy loading on trigger events
     opts = {
+      condition = function(buf)
+        if vim.bo[buf].filetype == 'harpoon2' then
+          return false
+        end
+      end,
       triger_events = {
         immediae_save = { 'BufLeave', 'FocusLost' },
         defer_save = { 'InsertLeave' },
