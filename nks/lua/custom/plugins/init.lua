@@ -116,9 +116,10 @@ return {
     event = { 'InsertLeave', 'TextChanged' }, -- optional for lazy loading on trigger events
     opts = {
       condition = function(buf)
-        if vim.bo[buf].filetype == 'harpoon2' then
+        if vim.bo[buf].filetype == 'harpoon' then
           return false
         end
+        return true
       end,
       triger_events = {
         immediae_save = { 'BufLeave', 'FocusLost' },
