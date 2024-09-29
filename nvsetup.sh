@@ -56,7 +56,6 @@ do
         echo "Adding ${NV} entry to .bashrc..."
         LINK="alias ${NV}='NVIM_APPNAME=${NV} nvim'"
         grep -q "${LINK}" ${BASHRC} || echo "${LINK}" >> ${BASHRC} 
-        exit
       fi
     fi
   fi
