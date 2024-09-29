@@ -42,6 +42,11 @@ case ${1} in
     done
     exit
     ;;
+  *) 
+    if [ ! -z ${1} ]; then
+      echo "No such arg: [blank] or clean"
+      exit
+    fi
 esac
 
 for NV in "${NVLIST[@]}"
