@@ -46,7 +46,7 @@ esac
 
 for NV in "${NVLIST[@]}"
 do
-  if [ ! -z $NV} ]; then
+  if [ ! -z ${NV} ]; then
     SRC=${CURRENT}/${NV}
     if [ -d ${SRC} ]; then
       DST=${CONF_DIR}/${NV}
@@ -63,7 +63,7 @@ do
 done
 for CF in "${CONFLIST[@]}"
 do
-  if [ ! -z $CF} ]; then
+  if [ ! -z ${CF} ]; then
     SRC=${CURRENT}/${CF}
     if [ -f ${SRC} ]; then
       DST=${CONF_DIR}/${CF}
