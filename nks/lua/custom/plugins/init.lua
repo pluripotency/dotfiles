@@ -17,11 +17,11 @@ return {
     end,
   },
   'vim-scripts/sudo.vim',
-  {
-    'windwp/nvim-autopairs',
-    event = 'InsertEnter',
-    opts = {},
-  },
+  -- {
+  --   'windwp/nvim-autopairs',
+  --   event = 'InsertEnter',
+  --   opts = {},
+  -- },
   {
     'folke/trouble.nvim',
     opts = {}, -- for default options, refer to the configuration section for custom setup.
@@ -77,26 +77,26 @@ return {
         harpoon.ui:toggle_quick_menu(harpoon:list())
       end, { desc = 'Toggle Harpoon Menu' })
 
-      vim.keymap.set('n', '<leader>ha', function()
+      vim.keymap.set('n', '<leader>h1', function()
         harpoon:list():select(1)
       end, { desc = '1st Harpoon list' })
-      vim.keymap.set('n', '<leader>hs', function()
+      vim.keymap.set('n', '<leader>h2', function()
         harpoon:list():select(2)
       end, { desc = '2nd Harpoon list' })
-      vim.keymap.set('n', '<leader>hd', function()
+      vim.keymap.set('n', '<leader>h3', function()
         harpoon:list():select(3)
       end, { desc = '3rd Harpoon list' })
-      vim.keymap.set('n', '<leader>hf', function()
+      vim.keymap.set('n', '<leader>h4', function()
         harpoon:list():select(4)
       end, { desc = '4th Harpoon list' })
 
       -- Toggle previous & next buffers stored within Harpoon list
-      vim.keymap.set('n', '<leader>hn', function()
-        harpoon:list():prev()
-      end, { desc = 'Next Harpoon list' })
-      vim.keymap.set('n', '<leader>hp', function()
-        harpoon:list():next()
-      end, { desc = 'Previous Harpoon list' })
+      -- vim.keymap.set('n', '<leader>hn', function()
+      --   harpoon:list():prev()
+      -- end, { desc = 'Next Harpoon list' })
+      -- vim.keymap.set('n', '<leader>hp', function()
+      --   harpoon:list():next()
+      -- end, { desc = 'Previous Harpoon list' })
     end,
   },
   -- {
