@@ -6,14 +6,14 @@ return {
   'kchmck/vim-coffee-script',
   'digitaltoad/vim-pug',
 
+  'sjl/badwolf',
   'navarasu/onedark.nvim',
   'doums/darcula',
-  'folke/tokyonight.nvim',
   {
-    'sjl/badwolf',
+    'folke/tokyonight.nvim',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'tokyonight'
+      vim.cmd.colorscheme 'onedark'
     end,
   },
   'vim-scripts/sudo.vim',
