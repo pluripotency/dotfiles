@@ -142,8 +142,8 @@ vnoremap ( "zdi(<C-R>z)<ESC>
 vnoremap " "zdi"<C-R>z"<ESC>
 vnoremap ' "zdi'<C-R>z'<ESC>
 
-colorscheme badwolf
-"colorscheme darcula
+"colorscheme badwolf
+colorscheme darcula
 "colorscheme blue
 "colorscheme elflord
 "colorscheme peachpuff

@@ -6,22 +6,17 @@ return {
   'kchmck/vim-coffee-script',
   'digitaltoad/vim-pug',
 
-  'sjl/badwolf',
+  -- colorscheme: tokyonight is set by top init.lua by priority 1000
   'navarasu/onedark.nvim',
   'doums/darcula',
-  {
-    'folke/tokyonight.nvim',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
-  },
-  'vim-scripts/sudo.vim',
   -- {
-  --   'windwp/nvim-autopairs',
-  --   event = 'InsertEnter',
-  --   opts = {},
+  --   'folke/tokyonight.nvim',
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd.colorscheme 'onedark'
+  --   end,
   -- },
+  'vim-scripts/sudo.vim',
   {
     'folke/trouble.nvim',
     opts = {}, -- for default options, refer to the configuration section for custom setup.
@@ -99,6 +94,11 @@ return {
       -- end, { desc = 'Previous Harpoon list' })
     end,
   },
+  -- {
+  --   'windwp/nvim-autopairs',
+  --   event = 'InsertEnter',
+  --   opts = {},
+  -- },
   -- {
   -- 'tyru/caw.vim',
   -- config = function ()
