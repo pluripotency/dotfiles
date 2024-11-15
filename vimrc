@@ -11,15 +11,16 @@ call plug#begin('$HOME/.vim/plugged')
 " Color
 Plug 'sjl/badwolf'
 Plug 'doums/darcula'
+Plug 'tpope/vim-vividchalk'
 "Plug 'altercation/vim-colors-solarized'
 "Plug 'nelstrom/vim-blackboard'
 "Plug 'josephwecker/murphytango.vim'
-"Plug 'imarbuger/vim-vividchalk'
 "Plug 'ciaranm/inkpot'
 "Plug 'ayu-theme/ayu-vim'
 " NerdTree
 Plug 'scrooloose/nerdtree'
 " Lang
+Plug 'cespare/vim-toml'
 Plug 'kchmck/vim-coffee-script'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'rust-lang/rust.vim'
