@@ -521,6 +521,8 @@ require('lazy').setup({
     config = function()
       local lspconfig = require 'lspconfig'
       lspconfig.coffeesense.setup {}
+      lspconfig.typescript.setup {}
+      lspconfig.tailwindcss.setup {}
       -- Brief aside: **What is LSP?**
       --
       -- LSP is an initialism you've probably heard, but might not understand what it is.
@@ -708,6 +710,8 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'pylint',
+        'typescript-language-server',
+        'tailwindcss-language-server',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
