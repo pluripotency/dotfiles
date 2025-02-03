@@ -11,7 +11,6 @@ declare -a CONFLIST=("pylintrc")
 
 case ${1} in
   "clean" ) 
-    sh ${CURRENT}/nvbashrc.sh clean
     for NV in "${NVLIST[@]}"
     do
       TGT=$HOME/.config/$NV
@@ -19,17 +18,16 @@ case ${1} in
         echo "Uninking ${TGT}"
         unlink ${TGT}
 
-        TGT=${HOME}/.cache/${NV}
-        echo "Deleting ${TGT}"
-        rm -rf ${TGT}
-        TGT=${HOME}/.local/share/${NV}
-        echo "Deleting ${TGT}"
-        rm -rf ${TGT}
-        TGT=${HOME}/.local/state/${NV}
-        echo "Deleting ${TGT}"
-        rm -rf ${TGT}
-        echo "Deleting ${NV} entry in bashrc..."
-        sed -i "/alias ${NV}=/d" ${BASHRC}
+        TGT1=${HOME}/.cache/${NV}
+        TGT2=${HOME}/.local/share/${NV}
+        TGT3=${HOME}/.local/state/${NV}
+        echo "Deleting ${TGT1} ${TGT2} ${TGT3}"
+        rm -rf ${TGT1} ${TGT2} ${TGT3}
+
+        if [ ${NV} != "nvim" ]; then
+          echo "Deleting ${NV} entry in bashrc..."
+          sed -i "/alias ${NV}='NVIM_APPNAME/d" ${BASHRC}
+        fi
       fi
     done
     for CF in "${CONFLIST[@]}"
@@ -58,9 +56,15 @@ do
       if [ ! -L ${DST} ] && [ ! -e ${DST} ]; then
         echo "Linking ${SRC} to ${DST}"
         ln -s ${SRC} ${DST}
-        echo "Adding ${NV} entry to .bashrc..."
-        LINK="alias ${NV}='NVIM_APPNAME=${NV} nvim'"
-        grep -q "${LINK}" ${BASHRC} || echo "${LINK}" >> ${BASHRC} 
+
+        if [ ${NV} != "nvim" ]; then
+          echo "Adding ${NV} entry to .bashrc..."
+          LINK="alias ${NV}='NVIM_APPNAME=${NV} nvim'"
+          grep -q "${LINK}" ${BASHRC} || echo "${LINK}" >> ${BASHRC}
+        else
+          NVIMAPP="alias nvim='/usr/local/bin/nvim.appimage'"
+          grep -q "${NVIMAPP}" ${BASHRC} || echo "${NVIMAPP}" >> ${BASHRC}
+        fi
       fi
     fi
   fi
