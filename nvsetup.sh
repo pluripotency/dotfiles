@@ -61,9 +61,9 @@ do
           echo "Adding ${NV} entry to .bashrc..."
           LINK="alias ${NV}='NVIM_APPNAME=${NV} nvim'"
           grep -q "${LINK}" ${BASHRC} || echo "${LINK}" >> ${BASHRC}
-        else
-          NVIMAPP="alias nvim='/usr/local/bin/nvim.appimage'"
-          grep -q "${NVIMAPP}" ${BASHRC} || echo "${NVIMAPP}" >> ${BASHRC}
+        # else
+        #   NVIMAPP="alias nvim='/usr/local/bin/nvim.appimage'"
+        #   grep -q "${NVIMAPP}" ${BASHRC} || echo "${NVIMAPP}" >> ${BASHRC}
         fi
       fi
     fi
