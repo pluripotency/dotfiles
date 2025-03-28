@@ -4,6 +4,7 @@ disable =
         C0115, # missing-class-docstring
         C0116, # missing-function-docstring
         C0415, # import-outside-toplevel
+        W0621, # redefined-outer-name
 [MAIN]
 
 # Analyse import fallback blocks. This can be used to support both Python 2 and
