@@ -6,7 +6,7 @@ if [ ! -d ${CONF_DIR} ];then
 fi
 
 BASHRC=$HOME/.bashrc
-declare -a NVLIST=("nmin" "nks" "nvim" "snacks" "lazyvim")
+declare -a NVLIST=("nmin" "nks" "nvim" "snacks" "lvim")
 declare -a CONFLIST=("pylintrc")
 
 case ${1} in
