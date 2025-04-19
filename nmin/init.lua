@@ -23,11 +23,8 @@ require('lazy').setup({
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
 
-  'sjl/badwolf',
-  'navarasu/onedark.nvim',
-  'doums/darcula',
   {
-    'folke/tokyonight.nvim',
+    'navarasu/onedark.nvim',
     priority = 1000,
     config = function ()
     	vim.cmd.colorscheme 'onedark'
