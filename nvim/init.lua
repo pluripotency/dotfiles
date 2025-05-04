@@ -23,8 +23,8 @@ vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l', { desc = 'Move focus to the up
 vim.keymap.set('n', '<C-/>', 'gcc', { desc = 'Comment Toggle' })
 vim.keymap.set('v', '<C-/>', 'gc', { desc = 'Comment Toggle' })
 
-vim.g.python3_host_prog = '/home/worker/.virtualenv/v3/bin/python'
-vim.g.python_host_prog = '/home/worker/.virtualenv/v3/bin/python'
+-- vim.g.python3_host_prog = '/home/worker/.virtualenv/v3/bin/python'
+-- vim.g.python_host_prog = '/home/worker/.virtualenv/v3/bin/python'
 
 vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup('turn_off_auto_commenting', {}),
@@ -47,6 +47,8 @@ vim.o.expandtab = true
 vim.o.autoindent = true
 vim.o.smartindent = false
 vim.o.cindent = true
+
+vim.diagnostic.config { virtual_text = true }
 -- End My Setting Options
 
 --[[
@@ -521,8 +523,8 @@ require('lazy').setup({
     config = function()
       local lspconfig = require 'lspconfig'
       lspconfig.coffeesense.setup {}
-      lspconfig.typescript.setup {}
-      lspconfig.tailwindcss.setup {}
+      -- lspconfig.typescript.setup {}
+      -- lspconfig.tailwindcss.setup {}
       -- Brief aside: **What is LSP?**
       --
       -- LSP is an initialism you've probably heard, but might not understand what it is.
@@ -711,8 +713,8 @@ require('lazy').setup({
         'stylua', -- Used to format Lua code
         'pylint',
         'jedi-language-server',
-        'typescript-language-server',
-        'tailwindcss-language-server',
+        -- 'typescript-language-server',
+        -- 'tailwindcss-language-server',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
