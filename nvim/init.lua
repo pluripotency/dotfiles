@@ -20,8 +20,8 @@ vim.keymap.set('t', '<C-j>', '<C-\\><C-n><C-w>j', { desc = 'Move focus to the ri
 vim.keymap.set('t', '<C-k>', '<C-\\><C-n><C-w>k', { desc = 'Move focus to the lower window' })
 vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l', { desc = 'Move focus to the upper window' })
 -- Comment Toggle
-vim.keymap.set('n', '<C-/>', 'gcc', { desc = 'Comment Toggle' })
-vim.keymap.set('v', '<C-/>', 'gc', { desc = 'Comment Toggle' })
+vim.keymap.set('n', '<C->', 'gcc', { desc = 'Comment Toggle' })
+vim.keymap.set('v', '<C->', 'gc', { desc = 'Comment Toggle' })
 
 -- vim.g.python3_host_prog = '/home/worker/.virtualenv/v3/bin/python'
 -- vim.g.python_host_prog = '/home/worker/.virtualenv/v3/bin/python'
