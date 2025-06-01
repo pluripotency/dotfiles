@@ -3,6 +3,13 @@
 --
 -- See the kickstart.nvim README for more information
 return {
+  {
+    'airblade/vim-rooter',
+    init = function()
+      vim.g.rooter_patterns = { '.git', 'pyproject.toml', 'package.json', '!node_modules' }
+    end,
+    vim.keymap.set('n', '<leader>a', function() end),
+  },
   'kchmck/vim-coffee-script',
   'digitaltoad/vim-pug',
 

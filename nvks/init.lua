@@ -1,56 +1,4 @@
--- My Setting Options
--- Better Window Navigation
-vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Move focus to the upper window' })
--- Change Window Size
-vim.keymap.set('n', '<C-Left>', '<C-w>><CR>', { desc = 'Change Window Size to Left' })
-vim.keymap.set('n', '<C-Down>', '<C-w>-<CR>', { desc = 'Change Window Size to Down' })
-vim.keymap.set('n', '<C-Up>', '<C-w>+<CR>', { desc = 'Change Window Size to Up' })
-vim.keymap.set('n', '<C-Right>', '<C-w><<CR>', { desc = 'Change Window Size to Right' })
--- Split Window
-vim.keymap.set('n', 'ss', ':split<Return><C-w>w', { desc = 'Split Window Horizontal' })
-vim.keymap.set('n', 'sv', ':vsplit<Return><C-w>w', { desc = 'Split Window Vertical' })
--- Terminal
-vim.keymap.set('n', '<C-t>', ':split<CR><C-w>j:resize 20<CR>:term<CR>', { desc = 'Open Terminal with 20size' })
-vim.keymap.set('t', '<ESC>', '<C-\\><C-n>', { desc = 'Exit Terminal Mode' })
-vim.keymap.set('t', '<C-h>', '<C-\\><C-n><C-w>h', { desc = 'Move focus to the left window' })
-vim.keymap.set('t', '<C-j>', '<C-\\><C-n><C-w>j', { desc = 'Move focus to the right window' })
-vim.keymap.set('t', '<C-k>', '<C-\\><C-n><C-w>k', { desc = 'Move focus to the lower window' })
-vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l', { desc = 'Move focus to the upper window' })
--- Comment Toggle
-vim.keymap.set('n', '<C-//>', 'gcc', { desc = 'Comment Toggle' })
-vim.keymap.set('v', '<C-//>', 'gc', { desc = 'Comment Toggle' })
-
--- vim.g.python3_host_prog = '/home/worker/.virtualenv/v3/bin/python'
--- vim.g.python_host_prog = '/home/worker/.virtualenv/v3/bin/python'
-
-vim.api.nvim_create_autocmd('FileType', {
-  group = vim.api.nvim_create_augroup('turn_off_auto_commenting', {}),
-  pattern = '*',
-  command = [[setlocal fo-=cro]],
-})
-vim.o.encoding = 'utf-8'
-vim.o.number = true
-vim.o.swapfile = false
-vim.o.backspace = 'indent,start,eol'
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.o.hlsearch = true
-vim.o.showcmd = true
-vim.o.tabstop = 2
-vim.o.softtabstop = 2
-vim.o.shiftwidth = 2
-vim.o.smarttab = true
-vim.o.expandtab = true
-vim.o.autoindent = true
-vim.o.smartindent = false
-vim.o.cindent = true
-
-vim.diagnostic.config { virtual_text = true }
--- End My Setting Options
-
+require 'custom.my'
 --[[
 
 =====================================================================
@@ -144,7 +92,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -546,6 +494,10 @@ require('lazy').setup({
       'saghen/blink.cmp',
     },
     config = function()
+      local lspconfig = require 'lspconfig'
+      lspconfig.coffeesense.setup {}
+      -- lspconfig.typescript.setup {}
+      -- lspconfig.tailwindcss.setup {}
       -- Brief aside: **What is LSP?**
       --
       -- LSP is an initialism you've probably heard, but might not understand what it is.
@@ -606,7 +558,8 @@ require('lazy').setup({
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
-          map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+          -- map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+          map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
 
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
@@ -724,8 +677,14 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
+        gopls = {
+          completeUnimported = true,
+          usePlaceholders = true,
+          analyses = {
+            unusedparams = true,
+          },
+        },
         -- clangd = {},
-        -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -769,6 +728,10 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'pylint',
+        'jedi-language-server',
+        -- 'typescript-language-server',
+        -- 'tailwindcss-language-server',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -889,6 +852,10 @@ require('lazy').setup({
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
         preset = 'default',
+        ['<Tab>'] = { 'select_and_accept' },
+        ['<CR>'] = { 'accept' },
+        -- ['<C-j'] = { 'select_next', 'fallback_to_mappings' },
+        -- ['<C-k'] = { 'select_prev', 'fallback_to_mappings' },
 
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
