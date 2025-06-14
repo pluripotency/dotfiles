@@ -7,6 +7,8 @@ return {
       lint.linters_by_ft = {
         python = { 'pylint' },
       }
+      lint.linters.pylint.cmd = 'python'
+      lint.linters.pylint.args = { '-m', 'pylint', '-f', 'json', vim.api.nvim_buf_get_name(0) }
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
       -- instead set linters_by_ft like this:
       -- lint.linters_by_ft = lint.linters_by_ft or {}

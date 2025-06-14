@@ -852,10 +852,10 @@ require('lazy').setup({
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
         preset = 'default',
-        ['<Tab>'] = { 'select_and_accept' },
-        ['<CR>'] = { 'accept' },
-        -- ['<C-j'] = { 'select_next', 'fallback_to_mappings' },
-        -- ['<C-k'] = { 'select_prev', 'fallback_to_mappings' },
+        ['<Tab>'] = { 'accept' },
+        ['<CR>'] = { 'select_and_accept' },
+        ['<C-j'] = { 'select_next', 'fallback_to_mappings' },
+        ['<C-k'] = { 'select_prev', 'fallback_to_mappings' },
 
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
@@ -995,10 +995,10 @@ require('lazy').setup({
   --
   require 'kickstart.plugins.debug',
   require 'kickstart.plugins.indent_line',
-  -- require 'kickstart.plugins.lint',
+  require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
-  -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
