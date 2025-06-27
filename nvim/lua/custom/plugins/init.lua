@@ -250,6 +250,13 @@ return {
     },
     config = function()
       require('nvim-tree').setup {
+        filters = {
+          git_ignored = false, -- デフォルトはtrue
+          custom = {
+            '^\\.git',
+            '^node_modules',
+          },
+        },
         update_focused_file = {
           enable = true,
           update_cwd = true,
