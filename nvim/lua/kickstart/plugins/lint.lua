@@ -8,9 +8,14 @@ return {
       lint.linters_by_ft = {
         -- markdown = { 'markdownlint' },
         python = { 'pylint' },
+        -- python = { 'ruff' },
       }
-      lint.linters.pylint.cmd = 'python'
-      lint.linters.pylint.args = { '-m', 'pylint', '-f', 'json', vim.api.nvim_buf_get_name(0) }
+      -- lint.linters.ruff.cmd = 'uv'
+      -- lint.linters.ruff.args = { 'run', 'ruff', 'check', '--output-format', 'json', vim.api.nvim_buf_get_name(0) }
+      lint.linters.pylint.cmd = 'uv'
+      lint.linters.pylint.args = { 'run', 'pylint', '-f', 'json', vim.api.nvim_buf_get_name(0) }
+      -- lint.linters.pylint.cmd = 'python'
+      -- lint.linters.pylint.args = { '-m', 'pylint', '-f', 'json', vim.api.nvim_buf_get_name(0) }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
       -- instead set linters_by_ft like this:
