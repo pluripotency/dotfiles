@@ -3,19 +3,19 @@
 --
 -- See the kickstart.nvim README for more information
 return {
-  {
-    'airblade/vim-rooter',
-    init = function()
-      vim.g.rooter_patterns = { '.git', 'pyproject.toml', 'package.json', '!node_modules' }
-    end,
-    vim.keymap.set('n', '<leader>a', function() end),
-  },
+  -- {
+  --   'airblade/vim-rooter',
+  --   init = function()
+  --     vim.g.rooter_patterns = { '.git', 'pyproject.toml', 'package.json', '!node_modules' }
+  --   end,
+  --   vim.keymap.set('n', '<leader>a', function() end),
+  -- },
   'kchmck/vim-coffee-script',
   'digitaltoad/vim-pug',
 
   -- colorscheme: tokyonight is set by top init.lua by priority 1000
   'navarasu/onedark.nvim',
-  'doums/darcula',
+  -- 'doums/darcula',
   -- {
   --   'folke/tokyonight.nvim',
   --   priority = 1000,
@@ -251,11 +251,12 @@ return {
     config = function()
       require('nvim-tree').setup {
         filters = {
-          git_ignored = false, -- デフォルトはtrue
-          custom = {
-            '^\\.git',
-            '^node_modules',
-          },
+          dotfiles = false,
+          -- git_ignored = false, -- デフォルトはtrue
+          -- custom = {
+          --   '^\\.git',
+          --   '^node_modules',
+          -- },
         },
         update_focused_file = {
           enable = true,
