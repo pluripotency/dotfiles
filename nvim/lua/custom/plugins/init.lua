@@ -252,7 +252,7 @@ return {
       require('nvim-tree').setup {
         filters = {
           dotfiles = false,
-          -- git_ignored = false, -- デフォルトはtrue
+          git_ignored = false, -- デフォルトはtrue
           -- custom = {
           --   '^\\.git',
           --   '^node_modules',
