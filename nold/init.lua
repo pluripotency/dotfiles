@@ -487,10 +487,7 @@ require('lazy').setup({
       'saghen/blink.cmp',
     },
     config = function()
-      local lspconfig = require 'lspconfig'
-      lspconfig.coffeesense.setup {}
-      -- lspconfig.typescript.setup {}
-      -- lspconfig.tailwindcss.setup {}
+      vim.lsp.enable 'coffeesense'
 
       -- Brief aside: **What is LSP?**
       --
@@ -725,8 +722,8 @@ require('lazy').setup({
         'stylua', -- Used to format Lua code
         'jedi-language-server',
         -- 'pylint',
-        -- 'typescript-language-server',
-        -- 'tailwindcss-language-server',
+        'typescript-language-server',
+        'tailwindcss-language-server',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -739,8 +736,8 @@ require('lazy').setup({
             -- This handles overriding only values explicitly passed
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for ts_ls)
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
+            -- server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+            vim.lsp.config(server)
           end,
         },
       }
