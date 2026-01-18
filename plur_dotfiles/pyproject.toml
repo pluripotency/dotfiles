@@ -1,0 +1,21 @@
+[project]
+name = "plur-dotfiles"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Masayoshi Kokuryo", email = "masakoku@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "plur",
+]
+[project.scripts]
+setup_menu = "plur_dotfiles.main:setup"
+
+[build-system]
+requires = ["uv_build>=0.9.5,<0.10.0"]
+build-backend = "uv_build"
+
+[tool.uv.sources]
+plur = { git = "https://github.com/pluripotency/plur" }
