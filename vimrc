@@ -11,7 +11,7 @@ call plug#begin('$HOME/.vim/plugged')
 " Color
 Plug 'sjl/badwolf'
 "Plug 'doums/darcula'
-Plug 'tpope/vim-vividchalk'
+"Plug 'tpope/vim-vividchalk'
 "Plug 'altercation/vim-colors-solarized'
 "Plug 'nelstrom/vim-blackboard'
 "Plug 'josephwecker/murphytango.vim'
@@ -143,8 +143,8 @@ vnoremap ( "zdi(<C-R>z)<ESC>
 vnoremap " "zdi"<C-R>z"<ESC>
 vnoremap ' "zdi'<C-R>z'<ESC>
 
-"colorscheme badwolf
-colorscheme darcula
+colorscheme badwolf
+"colorscheme darcula
 "colorscheme blue
 "colorscheme elflord
 "colorscheme peachpuff
