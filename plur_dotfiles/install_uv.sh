@@ -6,4 +6,6 @@ if [ -z "`command -v git`" ]; then
 fi
 echo 'installing uv'
 [ -z "`command -v uv`" ] && curl -LsSf https://astral.sh/uv/install.sh | sh
+sed -i '/alias activate=/d' ~/.bashrc
+echo 'alias activate=". .venv/bin/activate"' >> ~/.bashrc
 echo 'uv and git are ready.'
