@@ -6,12 +6,13 @@ if [ ! -d ${CONF_DIR} ];then
 fi
 
 BASHRC=$HOME/.bashrc
-declare -a NVLIST=("nmin" "nks" "nvim" "avim" "lvim" "nold" "nvks")
+declare -a CLNNVLIST=("nmin" "nks" "nvim" "avim" "lvim" "nold" "nvks" "snacks")
+declare -a NVLIST=("nmin" "nvim" "nvks")
 declare -a CONFLIST=("pylintrc")
 
 case ${1} in
   "clean" ) 
-    for NV in "${NVLIST[@]}"
+    for NV in "${CLNNVLIST[@]}"
     do
       TGT=$HOME/.config/$NV
       if [ -L $TGT ]; then

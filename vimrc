@@ -10,7 +10,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 call plug#begin('$HOME/.vim/plugged')
 " Color
 Plug 'sjl/badwolf'
-Plug 'doums/darcula'
+"Plug 'doums/darcula'
 Plug 'tpope/vim-vividchalk'
 "Plug 'altercation/vim-colors-solarized'
 "Plug 'nelstrom/vim-blackboard'

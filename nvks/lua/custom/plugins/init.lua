@@ -11,17 +11,6 @@ return {
   },
   'kchmck/vim-coffee-script',
   'digitaltoad/vim-pug',
-
-  -- colorscheme: tokyonight is set by top init.lua by priority 1000
-  'navarasu/onedark.nvim',
-  'doums/darcula',
-  -- {
-  --   'folke/tokyonight.nvim',
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd.colorscheme 'onedark'
-  --   end,
-  -- },
   'vim-scripts/sudo.vim',
   {
     'folke/noice.nvim',
