@@ -75,7 +75,7 @@ for CF in "${CONFLIST[@]}"
 do
   if [ ! -z ${CF} ]; then
     SRC=${CURRENT}/${CF}
-    if [ -f ${SRC} ]; then
+    if [ -f ${SRC} ] || [ -d ${SRC} ]; then
       DST=${CONF_DIR}/${CF}
       if [ ! -L ${DST} ] && [ ! -e ${DST} ]; then
         echo "Linking ${SRC} to ${DST}"
