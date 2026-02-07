@@ -8,7 +8,8 @@ fi
 BASHRC=$HOME/.bashrc
 declare -a CLNNVLIST=("nmin" "nks" "nvim" "avim" "lvim" "nold" "nvks" "snacks")
 declare -a NVLIST=("nmin" "nvim" "nvks")
-declare -a CONFLIST=("pylintrc")
+declare -a UNCONFLIST=("ruff", "pylintrc")
+declare -a CONFLIST=("ruff")
 
 case ${1} in
   "clean" ) 
@@ -31,7 +32,7 @@ case ${1} in
         fi
       fi
     done
-    for CF in "${CONFLIST[@]}"
+    for CF in "${UNCONFLIST[@]}"
     do
       TGT=$HOME/.config/$CF
       if [ -L $TGT ]; then
