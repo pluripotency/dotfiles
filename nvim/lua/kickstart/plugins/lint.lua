@@ -10,6 +10,8 @@ return {
         python = { 'ruff' },
         -- python = { 'pylint' },
       }
+      lint.linters.ruff.cmd = 'uv'
+      lint.linters.ruff.args = { 'tool','run', 'ruff', 'check', '--output-format=json', vim.api.nvim_buf_get_name(0) }
       -- lint.linters.pylint.cmd = 'uv'
       -- lint.linters.pylint.args = { 'run', 'pylint', '-f', 'json', vim.api.nvim_buf_get_name(0) }
 
