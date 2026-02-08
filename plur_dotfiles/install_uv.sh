@@ -1,7 +1,7 @@
 #! /bin/bash
 if [ -z "`command -v git`" ]; then
   echo 'installing git'
-  [ ! -z "`command -v yum`" ] && sudo yum install -y git
+  [ ! -z "`command -v yum`" ] && sudo yum install -y git tar
   [ ! -z "`command -v apt`" ] && sudo apt update && sudo apt install -y git
 fi
 echo 'installing uv'
