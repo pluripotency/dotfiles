@@ -1,20 +1,16 @@
-import os
 from mini.menu import choose_num, get_y_n
 from mini import misc
 from plur import base_shell
 from plur import base_node
 from plur import session_wrap
-from plur import log_param_templates
-from plur_dotfiles import host_ops_str
 from plur_dotfiles import nvim
 DOTDIR_PATH = '~/dotfiles'
-
 
 def create_log_params():
     now = misc.now()
     ymd = misc.get_ymd(now)
     hms_f = misc.get_hms_f(now)
-    log_dir = './plur_log'
+    log_dir = '/tmp/plur_dotfiles_log'
     log_params = {
         'log_dir': log_dir,
         'enable_stdout': True,
@@ -27,19 +23,13 @@ def create_log_params():
     }
     return log_params
 
-def get_platform():
-    redhat_release_path = '/etc/redhat-release'
-    etc_issue_path = '/etc/issue'
-    if misc.is_file(redhat_release_path):
-        redhat_dist = misc.open_read(redhat_release_path)
-        return host_ops_str.get_redhat_platform(redhat_dist)
-    elif misc.is_file(etc_issue_path):
-        etc_issue = misc.open_read(etc_issue_path)
-        return host_ops_str.get_issue_platform(etc_issue)
-
 def wrap_bash(func_params=None):
-    @session_wrap.bash(log_params=create_log_params())
+    me = base_node.Me()
+    @session_wrap.bash(me, log_params=create_log_params())
     def inner(session=None):
+        line = 'eval "$(uv generate-shell-completion bash)"'
+        base_shell.append_bashrc(session, line)
+
         base_shell.work_on(session, DOTDIR_PATH)
         func = None
         if func_params:
@@ -48,7 +38,7 @@ def wrap_bash(func_params=None):
             pkgs = ['vim', 'tmux']
             if 'pkgs' in func_params:
                 pkgs += func_params['pkgs']
-        platform = get_platform()
+        platform = me.platform
         if platform:
             if base_node.is_platform_rhel(platform):
                 base_shell.run(session, 'sudo yum install -y ' + ' '.join(pkgs))
