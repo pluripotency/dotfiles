@@ -1,6 +1,5 @@
 import re
 from plur import base_shell
-from plur import session_wrap
 
 def alias_appimage(install_path):
     def func(session):
@@ -29,8 +28,8 @@ def install_platform_dependancy(session):
         base_shell.run(session, 'sudo dnf install -y epel-release')
         base_shell.run(session, 'sudo dnf install -y fuse fuse-libs xclip ripgrep fd-find unzip wget gcc')
     elif re.search('^ubuntu', platform):
-        from plur_linux.recipes.ubuntu import ops
-        ops.sudo_apt_install_y(['libfuse2 unzip xz-utils fd-find ripgrep gcc'])(session)
+        pkgs = 'libfuse2 unzip xz-utils fd-find ripgrep gcc'
+        base_shell.run(session, f'sudo apt update && sudo apt -y install {pkgs} && reset')
 
 def install_appimage(version='latest', arch="linux-x86_64"):
     def func(session):
