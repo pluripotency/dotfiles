@@ -50,3 +50,11 @@ vim.o.cindent = true
 
 vim.diagnostic.config { virtual_text = true }
 -- End My Setting Options
+
+vim.g.python_recommended_style = 1
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "python",
+  callback = function()
+    vim.opt_local.indentexpr = ""
+  end,
+})
