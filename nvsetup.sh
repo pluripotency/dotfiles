@@ -7,7 +7,7 @@ fi
 
 BASHRC=$HOME/.bashrc
 declare -a CLNNVLIST=("nmin" "nks" "nvim" "avim" "lvim" "nold" "nvks" "snacks")
-declare -a NVLIST=("nmin" "nvim" "nvks")
+declare -a NVLIST=("nmin" "nvim" "nvks" "nold")
 declare -a UNCONFLIST=("ruff", "pylintrc")
 declare -a CONFLIST=("ruff")
 
