@@ -6,7 +6,7 @@ if [ ! -d ${CONF_DIR} ];then
 fi
 
 BASHRC=$HOME/.bashrc
-declare -a CLNNVLIST=("nmin" "nks" "nvim" "avim" "lvim" "nold" "nvks" "snacks")
+declare -a CLNNVLIST=("nmin" "nvim" "nold" "nvks" "nks" "avim" "lvim" "snacks")
 declare -a NVLIST=("nmin" "nvim" "nvks" "nold")
 declare -a UNCONFLIST=("ruff", "pylintrc")
 declare -a CONFLIST=("ruff")
