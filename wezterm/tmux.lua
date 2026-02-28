@@ -177,6 +177,7 @@ M.keys = {
 	{ key = ";", mods = "ALT", action = act.IncreaseFontSize },
 	{ key = "-", mods = "ALT", action = act.DecreaseFontSize },
 	{ key = "r", mods = "ALT", action = act.ResetFontSize },
+	{ key = "v", mods = "CTRL", action = act.PasteFrom 'Clipboard'},
 	-- Tab operations
 	{ key = "c", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") }, -- new tab
 	{ key = "n", mods = "LEADER", action = act.ActivateTabRelative(1) }, -- next tab
