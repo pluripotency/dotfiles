@@ -174,6 +174,9 @@ M.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 2000 }
 M.keys = {
 	-- My keybind
 	{ key = "l", mods = "ALT", action = act.ShowLauncher },
+	{ key = ";", mods = "ALT", action = act.IncreaseFontSize },
+	{ key = "-", mods = "ALT", action = act.DecreaseFontSize },
+	{ key = "r", mods = "ALT", action = act.ResetFontSize },
 	-- Tab operations
 	{ key = "c", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") }, -- new tab
 	{ key = "n", mods = "LEADER", action = act.ActivateTabRelative(1) }, -- next tab

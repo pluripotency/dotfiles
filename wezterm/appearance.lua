@@ -56,7 +56,8 @@ M.colors = {
 -- ============================================
 -- Fonts
 -- ============================================
-M.font_size = 10
+M.font_size = 11
+M.font = wezterm.font("PlemolJP Console NF")
 
 -- ============================================
 -- Apply to config
@@ -79,6 +80,7 @@ function M.apply(config)
 
 	-- Fonts
 	config.font_size = M.font_size
+	config.font = M.font
 
 	-- Tab title format (UTF-8 safe)
 	wezterm.on("format-tab-title", function(tab, tabs, panes, cfg, hover, max_width)
