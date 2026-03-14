@@ -278,9 +278,10 @@ require('lazy').setup({
         'stylua', -- Used to format Lua code
         'jedi-language-server',
         'ruff',
+        'tsgo',
         -- 'pylint',
-        'typescript-language-server',
-        'tailwindcss-language-server',
+        -- 'typescript-language-server',
+        -- 'tailwindcss-language-server',
       }
       require('mason-tool-installer').setup { ensure_installed = servers }
 
