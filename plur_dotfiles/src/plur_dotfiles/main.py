@@ -27,10 +27,13 @@ def install_vim_tmux_zoxide_nvim():
     me = base_node.Me()
     @session_wrap.bash(me, log_params=create_log_params())
     def inner(session):
-        line = 'eval "$(uv generate-shell-completion bash)"'
-        base_shell.append_bashrc(session, line)
         pkgs = ['vim', 'tmux', 'zoxide']
         nvim.install_appimage(additional_pkgs=pkgs)(session)
+        lines = [
+            'eval "$(uv generate-shell-completion bash)"',
+            'eval "$(zoxide init bash)"'
+        ]
+        _ = [base_shell.append_bashrc(session, line) for line in lines]
         base_shell.run(session, f'bash {DOTDIR_PATH}/dotsetup.sh')
         base_shell.run(session, f'bash {DOTDIR_PATH}/nvsetup.sh')
     inner()
