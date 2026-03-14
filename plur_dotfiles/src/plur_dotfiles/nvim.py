@@ -19,21 +19,21 @@ def add_additional(session):
         # base_shell.run(session, 'uv tool install pylint')
         base_shell.run(session, 'uv tool install ruff')
 
-def install_platform_dependancy(session):
+def install_platform_dependancy(session, additional_pkgs):
     platform = session.nodes[-1].platform
     if platform in ['almalinux8', 'centos8stream']:
         base_shell.run(session, 'sudo dnf install -y epel-release')
-        base_shell.run(session, 'sudo dnf install -y fuse tar ripgrep fd-find unzip wget gcc')
+        base_shell.run(session, 'sudo dnf install -y fuse tar ripgrep fd-find unzip wget gcc ' + ' '.join(additional_pkgs))
     elif platform.startswith('almalinux') or platform in ['almalinux9', 'centos9stream', 'fedora']:
         base_shell.run(session, 'sudo dnf install -y epel-release')
-        base_shell.run(session, 'sudo dnf install -y fuse fuse-libs xclip ripgrep fd-find unzip wget gcc')
+        base_shell.run(session, 'sudo dnf install -y fuse fuse-libs xclip ripgrep fd-find unzip wget gcc ' + ' '.join(additional_pkgs))
     elif re.search('^ubuntu', platform):
-        pkgs = 'libfuse2 unzip xz-utils fd-find ripgrep gcc'
+        pkgs = 'libfuse2 unzip xz-utils fd-find ripgrep gcc ' + ' '.join(additional_pkgs)
         base_shell.run(session, f'sudo apt update && sudo apt -y install {pkgs} && reset')
 
-def install_appimage(version='latest', arch="linux-x86_64"):
+def install_appimage(version='latest', arch="linux-x86_64", additional_pkgs=[]):
     def func(session):
-        install_platform_dependancy(session)
+        install_platform_dependancy(session, additional_pkgs)
         if version == 'latest':
             ver = 'latest/download'
         else:

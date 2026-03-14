@@ -23,42 +23,21 @@ def create_log_params():
     }
     return log_params
 
-def wrap_bash(func_params=None):
+def install_vim_tmux_zoxide_nvim():
     me = base_node.Me()
     @session_wrap.bash(me, log_params=create_log_params())
-    def inner(session=None):
+    def inner(session):
         line = 'eval "$(uv generate-shell-completion bash)"'
         base_shell.append_bashrc(session, line)
-
-        base_shell.work_on(session, DOTDIR_PATH)
-        func = None
-        if func_params:
-            if 'func' in func_params:
-                func = func_params['func']
-            pkgs = ['vim', 'tmux']
-            if 'pkgs' in func_params:
-                pkgs += func_params['pkgs']
-        platform = me.platform
-        if platform:
-            if base_node.is_platform_rhel(platform):
-                base_shell.run(session, 'sudo yum install -y ' + ' '.join(pkgs))
-            elif platform.startswith('ubuntu'):
-                base_shell.run(session, 'sudo apt update && sudo apt install -y ' + ' '.join(pkgs))
+        pkgs = ['vim', 'tmux', 'zoxide']
+        nvim.install_appimage(additional_pkgs=pkgs)(session)
         base_shell.run(session, f'bash {DOTDIR_PATH}/dotsetup.sh')
-        if func and callable(func):
-            func(session)
-    return inner
-
-def install_nvim():
-    def inner(session):
-        nvim.install_appimage()(session)
         base_shell.run(session, f'bash {DOTDIR_PATH}/nvsetup.sh')
     return {'func': inner}
 
 def setup():
     menu_func_list = [
-        ["vim, tmux", wrap_bash()],
-        ["vim, tmux, nvim(uv)", wrap_bash(install_nvim())],
+        ["vim, tmux, zoxide, nvim(uv)", install_vim_tmux_zoxide_nvim],
     ]
     num = choose_num([item[0] for item in menu_func_list])
     if get_y_n(f"Do you want to setup {menu_func_list[num][0]}"):
