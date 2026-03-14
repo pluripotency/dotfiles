@@ -33,7 +33,7 @@ def install_vim_tmux_zoxide_nvim():
         nvim.install_appimage(additional_pkgs=pkgs)(session)
         base_shell.run(session, f'bash {DOTDIR_PATH}/dotsetup.sh')
         base_shell.run(session, f'bash {DOTDIR_PATH}/nvsetup.sh')
-    return {'func': inner}
+    inner()
 
 def setup():
     menu_func_list = [
