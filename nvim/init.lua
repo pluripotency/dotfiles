@@ -278,7 +278,8 @@ require('lazy').setup({
         'lua_ls',
         'gopls',
         'stylua', -- Used to format Lua code
-        'jedi-language-server',
+        'ty',
+        -- 'jedi-language-server',
         'ruff',
         'tsgo',
         -- 'pylint',
