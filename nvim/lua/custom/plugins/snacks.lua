@@ -30,7 +30,7 @@ return {
       { '<leader>:', function() Snacks.picker.command_history() end, desc = 'Command History', },
       -- { '<leader>n', function() Snacks.picker.notifications() end, desc = 'Notification History', },
       { '<leader>e', function() Snacks.explorer() end, desc = 'File Explorer', },
-      -- { '<leader>n', function() Snacks.explorer() end, desc = 'File Explorer', },
+      { '<leader>n', function() Snacks.explorer() end, desc = 'File Explorer', },
       -- zoxide
       { '<leader>sz', function() Snacks.picker.zoxide() end, desc = 'zoxide', },
       -- find
