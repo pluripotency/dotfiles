@@ -30,6 +30,10 @@ def install_platform_dependancy(session, additional_pkgs):
     elif re.search('^ubuntu', platform):
         pkgs = 'libfuse2 unzip xz-utils fd-find ripgrep gcc ' + ' '.join(additional_pkgs)
         base_shell.run(session, f'sudo apt update && sudo apt -y install {pkgs} && reset')
+    elif platform.startswith('arch'):
+        PACKMAN_NOCONFIRM = 'pacman --noconfirm'
+        pkgs = ['zig neovim ripgrep fd'] + additional_pkgs
+        base_shell.run(session, f'sudo {PACKMAN_NOCONFIRM} -Syy ' + ' '.join(pkgs))
 
 def install_appimage(version='latest', arch="linux-x86_64", additional_pkgs=[]):
     def func(session):

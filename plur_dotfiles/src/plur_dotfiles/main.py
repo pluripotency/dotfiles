@@ -3,7 +3,7 @@ from mini import misc
 from plur import base_shell
 from plur import base_node
 from plur import session_wrap
-from plur_dotfiles import nvim
+from plur_dotfiles.clitools import nvim, tmux
 DOTDIR_PATH = '~/dotfiles'
 
 def create_log_params():
@@ -27,7 +27,15 @@ def install_vim_tmux_zoxide_nvim():
     me = base_node.Me()
     @session_wrap.bash(me, log_params=create_log_params())
     def inner(session):
-        pkgs = ['vim', 'tmux', 'zoxide']
+        if session.platform == 'almalinux10':
+            pkgs = ['vim']
+            tmux.install_tmux_appimage()(session)
+            base_shell.run(session, 'curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh')
+            # from plur_dotfiles.langs import rust
+            # rust.install(session)
+            # base_shell.run(session, 'cargo install zoxide')
+        else:
+            pkgs = ['vim', 'tmux', 'zoxide']
         nvim.install_appimage(additional_pkgs=pkgs)(session)
         lines = [
             'eval "$(uv generate-shell-completion bash)"',

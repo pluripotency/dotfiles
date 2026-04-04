@@ -1,7 +1,7 @@
 [project]
 name = "plur-dotfiles"
 version = "0.1.0"
-description = "Add your description here"
+description = "better dotfiles setups"
 readme = "README.md"
 authors = [
     { name = "Masayoshi Kokuryo", email = "masakoku@gmail.com" }
