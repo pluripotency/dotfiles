@@ -28,14 +28,14 @@ def install_vim_tmux_zoxide_nvim():
     @session_wrap.bash(me, log_params=create_log_params())
     def inner(session):
         if session.platform == 'almalinux10':
-            pkgs = ['vim']
+            pkgs = ['vim', 'fzf']
             tmux.install_tmux_appimage()(session)
             base_shell.run(session, 'curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh')
             # from plur_dotfiles.langs import rust
             # rust.install(session)
             # base_shell.run(session, 'cargo install zoxide')
         else:
-            pkgs = ['vim', 'tmux', 'zoxide']
+            pkgs = ['vim', 'tmux', 'zoxide', 'fzf']
         nvim.install_appimage(additional_pkgs=pkgs)(session)
         lines = [
             'eval "$(uv generate-shell-completion bash)"',
