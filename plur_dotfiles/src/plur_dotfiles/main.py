@@ -42,6 +42,7 @@ def install_vim_tmux_zoxide_nvim():
             'eval "$(zoxide init bash)"'
         ]
         _ = [base_shell.append_bashrc(session, line) for line in lines]
+        tmux.setup_tmux(session)
         base_shell.run(session, f'bash {DOTDIR_PATH}/dotsetup.sh')
         base_shell.run(session, f'bash {DOTDIR_PATH}/nvsetup.sh')
     inner()
