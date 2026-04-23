@@ -24,8 +24,8 @@ wheels = [
 
 [[package]]
 name = "plur"
-version = "0.19"
-source = { git = "https://github.com/pluripotency/plur#9168687473d53f0eebb14c050a551a41c5b0b101" }
+version = "0.20"
+source = { git = "https://github.com/pluripotency/plur#365325f5ff47b9ce4e89f2003403fb3c9dee2324" }
 dependencies = [
     { name = "mini" },
     { name = "pexpect" },
