@@ -1,4 +1,6 @@
 return {
+  'craftzdog/solarized-osaka.nvim',
+  'scottmckendry/cyberdream.nvim',
   'uhs-robert/oasis.nvim',
   'xero/evangelion.nvim',
   'ellisonleao/gruvbox.nvim',
