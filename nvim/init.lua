@@ -274,7 +274,7 @@ require('lazy').setup({
       }
       local servers = {
         'lua_ls',
-        'gopls',
+        -- 'gopls',
         'stylua', -- Used to format Lua code
         'ty',
         -- 'jedi-language-server',
@@ -309,13 +309,13 @@ require('lazy').setup({
             },
           },
       })
-      vim.lsp.config('gopls', {
-        completeUnimported = true,
-        usePlaceholders = true,
-        analyses = {
-          unusedparams = true,
-        },
-      })
+      -- vim.lsp.config('gopls', {
+      --   completeUnimported = true,
+      --   usePlaceholders = true,
+      --   analyses = {
+      --     unusedparams = true,
+      --   },
+      -- })
     end,
   },
 

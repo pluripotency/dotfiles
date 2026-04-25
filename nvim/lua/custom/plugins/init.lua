@@ -1,12 +1,17 @@
--- You can add your own plugins here or in other files in this directory!
---  I promise not to create any merge conflicts in this directory :)
---
--- See the kickstart.nvim README for more information
 return {
+  'uhs-robert/oasis.nvim',
+  'xero/evangelion.nvim',
+  'ellisonleao/gruvbox.nvim',
+  'thallada/farout.nvim',
+  'catppuccin/nvim',
+  'rebelot/kanagawa.nvim',
+  'thesimonho/kanagawa-paper.nvim',
+  'AlexvZyl/nordic.nvim',
+  'sainnhe/sonokai',
+  'ray-x/aurora',
+  'navarasu/onedark.nvim',
   {
     'MeanderingProgrammer/render-markdown.nvim',
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },            -- if you use the mini.nvim suite
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' },        -- if you use standalone mini plugins
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
@@ -50,17 +55,6 @@ return {
   -- },
   'kchmck/vim-coffee-script',
   'digitaltoad/vim-pug',
-
-  -- colorscheme: tokyonight is set by top init.lua by priority 1000
-  'navarasu/onedark.nvim',
-  -- 'doums/darcula',
-  -- {
-  --   'folke/tokyonight.nvim',
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd.colorscheme 'onedark'
-  --   end,
-  -- },
   'vim-scripts/sudo.vim',
   {
     'folke/trouble.nvim',
@@ -108,7 +102,6 @@ return {
 
       -- REQUIRED
       harpoon:setup()
-      -- REQUIRED
 
       vim.keymap.set('n', '<leader>a', function()
         harpoon:list():add()
