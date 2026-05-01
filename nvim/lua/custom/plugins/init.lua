@@ -1,10 +1,8 @@
 return {
-  'craftzdog/solarized-osaka.nvim',
-  'scottmckendry/cyberdream.nvim',
+  'maxmx03/solarized.nvim',
   'uhs-robert/oasis.nvim',
   'xero/evangelion.nvim',
   'ellisonleao/gruvbox.nvim',
-  'thallada/farout.nvim',
   'catppuccin/nvim',
   'rebelot/kanagawa.nvim',
   'thesimonho/kanagawa-paper.nvim',

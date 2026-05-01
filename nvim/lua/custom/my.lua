@@ -108,7 +108,7 @@ vim.o.autoindent = true
 vim.o.smartindent = false
 vim.o.cindent = true
 
-vim.diagnostic.config { virtual_text = true }
+-- vim.diagnostic.config { virtual_text = true }
 -- End My Setting Options
 
 -- when treesitter python style bug

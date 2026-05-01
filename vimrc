@@ -9,7 +9,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 call plug#begin('$HOME/.vim/plugged')
 " Color
-Plug 'sjl/badwolf'
+"Plug 'sjl/badwolf'
 "Plug 'doums/darcula'
 "Plug 'tpope/vim-vividchalk'
 "Plug 'altercation/vim-colors-solarized'
@@ -143,11 +143,11 @@ vnoremap ( "zdi(<C-R>z)<ESC>
 vnoremap " "zdi"<C-R>z"<ESC>
 vnoremap ' "zdi'<C-R>z'<ESC>
 
-colorscheme badwolf
+"colorscheme badwolf
 "colorscheme darcula
 "colorscheme blue
 "colorscheme elflord
-"colorscheme peachpuff
+colorscheme peachpuff
 "colorscheme solarized
 "set background=dark
 
