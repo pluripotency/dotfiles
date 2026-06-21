@@ -1,5 +1,7 @@
 import re
+from plur import base_node
 from plur import base_shell
+from plur_dotfiles.langs import nodebrew
 
 def alias_appimage(install_path):
     def func(session):
@@ -13,7 +15,7 @@ def alias_appimage(install_path):
 
 def add_additional(session):
     if base_shell.check_command_exists(session, 'npm'):
-        base_shell.run(session, 'npm i -g neovim')
+        base_shell.run(session, 'npm i -g neovim tree-sitter-cli')
     if base_shell.check_command_exists(session, 'uv'):
         base_shell.run(session, 'uv tool install --upgrade pynvim')
         # base_shell.run(session, 'uv tool install pylint')
@@ -21,12 +23,14 @@ def add_additional(session):
 
 def install_platform_dependancy(session, additional_pkgs):
     platform = session.nodes[-1].platform
-    if platform in ['almalinux8', 'centos8stream']:
+    node_version = 'stable'
+    if base_node.is_platform_rhel(platform):
+        node_version = 'v24'
         base_shell.run(session, 'sudo dnf install -y epel-release')
-        base_shell.run(session, 'sudo dnf install -y fuse tar ripgrep fd-find unzip wget gcc ' + ' '.join(additional_pkgs))
-    elif platform.startswith('almalinux') or platform in ['almalinux9', 'centos9stream', 'fedora']:
-        base_shell.run(session, 'sudo dnf install -y epel-release')
-        base_shell.run(session, 'sudo dnf install -y fuse fuse-libs xclip ripgrep fd-find unzip wget gcc ' + ' '.join(additional_pkgs))
+        if platform in ['almalinux8', 'centos8stream']:
+            base_shell.run(session, 'sudo dnf install -y fuse tar ripgrep fd-find unzip wget gcc ' + ' '.join(additional_pkgs))
+        elif platform.startswith('almalinux') or platform in ['centos9stream', 'fedora']:
+            base_shell.run(session, 'sudo dnf install -y fuse fuse-libs xclip ripgrep fd-find unzip wget gcc ' + ' '.join(additional_pkgs))
     elif re.search('^ubuntu', platform):
         pkgs = 'libfuse2 unzip xz-utils fd-find ripgrep gcc ' + ' '.join(additional_pkgs)
         base_shell.run(session, f'sudo apt update && sudo apt -y install {pkgs} && reset')
@@ -34,6 +38,7 @@ def install_platform_dependancy(session, additional_pkgs):
         PACKMAN_NOCONFIRM = 'pacman --noconfirm'
         pkgs = ['zig neovim ripgrep fd'] + additional_pkgs
         base_shell.run(session, f'sudo {PACKMAN_NOCONFIRM} -Syy ' + ' '.join(pkgs))
+    nodebrew.install(node_version)(session)
 
 def install_appimage(version='latest', arch="linux-x86_64", additional_pkgs=[]):
     def func(session):
