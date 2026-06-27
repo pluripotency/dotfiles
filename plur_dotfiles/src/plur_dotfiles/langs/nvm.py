@@ -1,6 +1,6 @@
 from plur import base_shell
 NVM_VERSION='v0.40.4'
-NODE_VERSION='v26'
+NODE_VERSION='--lts'
 
 def setup_nvm(session):
     base_shell.run(session, f'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/{NVM_VERSION}/install.sh | bash')

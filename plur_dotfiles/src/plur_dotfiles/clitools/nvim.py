@@ -18,14 +18,13 @@ def add_additional(session):
         base_shell.run(session, 'npm i -g neovim tree-sitter-cli')
     if base_shell.check_command_exists(session, 'uv'):
         base_shell.run(session, 'uv tool install --upgrade pynvim')
-        # base_shell.run(session, 'uv tool install pylint')
         base_shell.run(session, 'uv tool install ruff')
 
 def install_platform_dependancy(session, additional_pkgs):
     platform = session.nodes[-1].platform
-    node_version = 'v26'
+    node_version = '--lts'
     if base_node.is_platform_rhel(platform):
-        node_version = 'v24'
+        node_version = '24'
         base_shell.run(session, 'sudo dnf install -y epel-release')
         if platform in ['almalinux8', 'centos8stream']:
             base_shell.run(session, 'sudo dnf install -y fuse tar ripgrep fd-find unzip wget gcc ' + ' '.join(additional_pkgs))
