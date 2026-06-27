@@ -1,7 +1,7 @@
 import re
 from plur import base_node
 from plur import base_shell
-from plur_dotfiles.langs import nodebrew
+from plur_dotfiles.langs import nvm
 
 def alias_appimage(install_path):
     def func(session):
@@ -23,7 +23,7 @@ def add_additional(session):
 
 def install_platform_dependancy(session, additional_pkgs):
     platform = session.nodes[-1].platform
-    node_version = 'stable'
+    node_version = 'v26'
     if base_node.is_platform_rhel(platform):
         node_version = 'v24'
         base_shell.run(session, 'sudo dnf install -y epel-release')
@@ -38,7 +38,7 @@ def install_platform_dependancy(session, additional_pkgs):
         PACKMAN_NOCONFIRM = 'pacman --noconfirm'
         pkgs = ['zig neovim ripgrep fd'] + additional_pkgs
         base_shell.run(session, f'sudo {PACKMAN_NOCONFIRM} -Syy ' + ' '.join(pkgs))
-    nodebrew.install(node_version)(session)
+    nvm.install(node_version)(session)
 
 def install_appimage(version='latest', arch="linux-x86_64", additional_pkgs=[]):
     def func(session):
