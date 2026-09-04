@@ -274,7 +274,7 @@ require('lazy').setup({
       }
       local servers = {
         'lua_ls',
-        -- 'gopls',
+        'gopls',
         'stylua', -- Used to format Lua code
         'ty',
         -- 'jedi-language-server',
@@ -298,7 +298,7 @@ require('lazy').setup({
       vim.lsp.config('ty', {
         settings = {
           ty = {
-            completion = {
+            completions = {
               autoImport = false,
             }
           },
