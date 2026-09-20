@@ -279,7 +279,7 @@ require('lazy').setup({
         'ty',
         -- 'jedi-language-server',
         'ruff',
-        'tsgo',
+        'tsc',
         -- 'pylint',
         -- 'typescript-language-server',
         -- 'tailwindcss-language-server',

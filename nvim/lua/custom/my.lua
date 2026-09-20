@@ -106,16 +106,16 @@ vim.o.smarttab = true
 vim.o.expandtab = true
 vim.o.autoindent = true
 vim.o.smartindent = false
-vim.o.cindent = true
+vim.o.cindent = false
 
 -- vim.diagnostic.config { virtual_text = true }
 -- End My Setting Options
 
--- when treesitter python style bug
--- vim.g.python_recommended_style = 1
--- vim.api.nvim_create_autocmd("FileType", {
---   pattern = "python",
---   callback = function()
---     vim.opt_local.indentexpr = ""
---   end,
--- })
+-- Python indentation configuration
+vim.g.python_indent = {
+  open_paren = 'shiftwidth()',
+  nested_paren = 'shiftwidth()',
+  continue = 'shiftwidth()',
+  closed_paren_align_last_line = false,
+}
+
