@@ -30,20 +30,39 @@ return {
   },
   {
     'stevearc/conform.nvim',
-    opts = {},
-    event = "BufReadPre",
+    event = { 'BufWritePre' },
+    cmd = { 'ConformInfo' },
+    keys = {
+      {
+        '<leader>f',
+        function()
+          require('conform').format { async = true, lsp_format = 'fallback' }
+        end,
+        mode = '',
+        desc = '[F]ormat buffer',
+      },
+    },
     config = function()
-      require("conform").setup({
-        formatters_by_ft = {
-          lua = function(bufnr)
-            local filename = vim.api.nvim_buf_get_name(bufnr)
-            if filename:match("whichkey.lua") then
-              return {} -- Return empty table to skip all formatters
-            end
-            return { "stylua" } -- Use stylua for other Lua files
-          end,
+      require('conform').setup {
+        notify_on_error = false,
+        default_format_opts = {
+          lsp_format = 'fallback',
         },
-      })
+        format_on_save = function(bufnr)
+          local disable_filetypes = { c = true, cpp = true }
+          local filename = vim.api.nvim_buf_get_name(bufnr)
+          if disable_filetypes[vim.bo[bufnr].filetype] or filename:match 'whichkey.lua' then
+            return nil
+          end
+          return {
+            timeout_ms = 500,
+            lsp_format = 'fallback',
+          }
+        end,
+        formatters_by_ft = {
+          lua = { 'stylua' },
+        },
+      }
     end,
   },
 -- {
