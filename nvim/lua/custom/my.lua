@@ -119,3 +119,13 @@ vim.g.python_indent = {
   closed_paren_align_last_line = false,
 }
 
+-- TOML indentation configuration
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'toml',
+  callback = function()
+    vim.cmd 'runtime! indent/json.vim'
+    vim.opt_local.indentexpr = 'GetJSONIndent(v:lnum)'
+    vim.opt_local.indentkeys = '0{,0},0),0],!^F,o,O,e'
+  end,
+})
+
