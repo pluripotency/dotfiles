@@ -12,7 +12,8 @@ return {
   'navarasu/onedark.nvim',
   {
     'MeanderingProgrammer/render-markdown.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    dependencies = { 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
     opts = {},
@@ -24,7 +25,7 @@ return {
     opts = {},
     -- Optional dependencies
     -- dependencies = { { "nvim-mini/mini.icons", opts = {} } },
-    dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+    dependencies = { 'nvim-tree/nvim-web-devicons' }, -- use if you prefer nvim-web-devicons
     -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
     lazy = false,
   },
@@ -49,7 +50,7 @@ return {
           lsp_format = 'fallback',
         },
         format_on_save = function(bufnr)
-          local disable_filetypes = { c = true, cpp = true }
+          local disable_filetypes = { c = true, cpp = true, python = true }
           local filename = vim.api.nvim_buf_get_name(bufnr)
           if disable_filetypes[vim.bo[bufnr].filetype] or filename:match 'whichkey.lua' then
             return nil
@@ -65,7 +66,7 @@ return {
       }
     end,
   },
--- {
+  -- {
   --   'airblade/vim-rooter',
   --   init = function()
   --     vim.g.rooter_patterns = { '.git', 'pyproject.toml', 'package.json', '!node_modules' }

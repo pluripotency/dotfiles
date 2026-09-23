@@ -231,7 +231,6 @@ require('lazy').setup({
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
           map('<leader>ra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
-
         end,
       })
 
@@ -241,9 +240,9 @@ require('lazy').setup({
         severity_sort = true,
         fload = {
           focusable = false,
-          style = "minimal",
-          border = "rounded",
-          source = "always",
+          style = 'minimal',
+          border = 'rounded',
+          source = 'always',
         },
         -- float = { border = 'rounded', source = 'if_many' },
         underline = { severity = vim.diagnostic.severity.ERROR },
@@ -292,7 +291,7 @@ require('lazy').setup({
         automatic_installation = false,
         handlers = {
           function(server_name)
-            vim.lsp.enable({server_name})
+            vim.lsp.enable { server_name }
           end,
         },
       }
@@ -301,23 +300,23 @@ require('lazy').setup({
           ty = {
             completions = {
               autoImport = false,
-            }
+            },
           },
         },
       })
       vim.lsp.config('lua_ls', {
-          settings = {
-            Lua = {
-              diagnostics = {
-                globals = { "vim" }
-              },
-              completion = {
-                callSnippet = 'Replace',
-              },
-              -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-              -- diagnostics = { disable = { 'missing-fields' } },
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { 'vim' },
             },
+            completion = {
+              callSnippet = 'Replace',
+            },
+            -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+            -- diagnostics = { disable = { 'missing-fields' } },
           },
+        },
       })
       -- vim.lsp.config('gopls', {
       --   completeUnimported = true,
@@ -327,47 +326,6 @@ require('lazy').setup({
       --   },
       -- })
     end,
-  },
-
-  { -- Autoformat
-    'stevearc/conform.nvim',
-    event = { 'BufWritePre' },
-    cmd = { 'ConformInfo' },
-    keys = {
-      {
-        '<leader>f',
-        function()
-          require('conform').format { async = true, lsp_format = 'fallback' }
-        end,
-        mode = '',
-        desc = '[F]ormat buffer',
-      },
-    },
-    opts = {
-      notify_on_error = false,
-      format_on_save = function(bufnr)
-        -- Disable "format_on_save lsp_fallback" for languages that don't
-        -- have a well standardized coding style. You can add additional
-        -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
-        if disable_filetypes[vim.bo[bufnr].filetype] then
-          return nil
-        else
-          return {
-            timeout_ms = 500,
-            lsp_format = 'fallback',
-          }
-        end
-      end,
-      formatters_by_ft = {
-        lua = { 'stylua' },
-        -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
-        --
-        -- You can use 'stop_after_first' to run the first available formatter from the list
-        -- javascript = { "prettierd", "prettier", stop_after_first = true },
-      },
-    },
   },
 
   { -- Autocompletion
