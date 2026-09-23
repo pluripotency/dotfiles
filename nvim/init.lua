@@ -475,7 +475,29 @@ require('lazy').setup({
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
-      require('mini.surround').setup()
+      -- - saF   - [S]urround [A]dd # [f]mt: off ~ on (Visual選択時)
+      -- - saipF - [S]urround [A]dd # [f]mt: off ~ on (段落を囲む)
+      -- - sdF   - [S]urround [D]elete # [f]mt: off ~ on (囲みを削除)
+      require('mini.surround').setup {
+        custom_surroundings = {
+          -- # fmt: off / # fmt: on による囲み設定
+          -- 識別子に大文字 'F' を指定（小文字 'f' は関数呼び出し用として標準予約されているため）
+          F = {
+            -- input: 削除(sdF)・置換(srF)時に # fmt: off ~ on を検出するパターン
+            input = { '()%s*# fmt: off\n().-()\n%s*# fmt: on()' },
+            -- output: 追加(saF, saipF等)時に挿入する文字列
+            -- 現在行のインデントを自動取得して同じインデントで揃える
+            output = function()
+              local line = vim.fn.getline '.'
+              local indent = line:match '^(%s*)' or ''
+              return {
+                left = indent .. '# fmt: off\n',
+                right = '\n' .. indent .. '# fmt: on',
+              }
+            end,
+          },
+        },
+      }
 
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
