@@ -3,13 +3,9 @@ name = "plur-dotfiles"
 version = "0.1.0"
 description = "better dotfiles setups"
 readme = "README.md"
-authors = [
-    { name = "Masayoshi Kokuryo", email = "masakoku@gmail.com" }
-]
-requires-python = ">=3.11"
-dependencies = [
-    "plur>=0.20",
-]
+authors = [{ name = "Masayoshi Kokuryo", email = "masakoku@gmail.com" }]
+requires-python = ">=3.15"
+dependencies = ["plur>=0.20"]
 [project.scripts]
 setup_menu = "plur_dotfiles.main:setup"
 
