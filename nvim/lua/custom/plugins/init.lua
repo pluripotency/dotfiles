@@ -3,7 +3,7 @@ return {
   -- 'uhs-robert/oasis.nvim',
   -- 'xero/evangelion.nvim',
   -- 'ellisonleao/gruvbox.nvim',
-  -- 'rebelot/kanagawa.nvim',
+  'rebelot/kanagawa.nvim',
   -- 'thesimonho/kanagawa-paper.nvim',
   -- 'AlexvZyl/nordic.nvim',
   -- 'sainnhe/sonokai',
