@@ -69,14 +69,14 @@ vnoremap ' "zdi'<C-R>z'<ESC>
 "    ni $HOME/vimfiles/autoload/plug.vim -Force
 call plug#begin()
 " Color
-Plug 'sjl/badwolf'
-Plug 'doums/darcula'
+"Plug 'sjl/badwolf'
+"Plug 'doums/darcula'
 "Plug 'altercation/vim-colors-solarized'
-Plug 'nelstrom/vim-blackboard'
-Plug 'josephwecker/murphytango.vim'
+"Plug 'nelstrom/vim-blackboard'
+"Plug 'josephwecker/murphytango.vim'
 "Plug 'imarbuger/vim-vividchalk'
-Plug 'ciaranm/inkpot'
-Plug 'ayu-theme/ayu-vim'
+"Plug 'ciaranm/inkpot'
+"Plug 'ayu-theme/ayu-vim'
 " NerdTree
 Plug 'scrooloose/nerdtree'
 " Lang
@@ -155,8 +155,9 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline_powerline_fonts = 1
 
 "colorscheme badwolf
-colorscheme darcula
+"colorscheme darcula
 "colorscheme blue
+colorscheme darkblue
 "colorscheme elflord
 "colorscheme peachpuff
 "colorscheme solarized

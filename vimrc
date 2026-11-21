@@ -146,8 +146,9 @@ vnoremap ' "zdi'<C-R>z'<ESC>
 "colorscheme badwolf
 "colorscheme darcula
 "colorscheme blue
+colorscheme darkblue
 "colorscheme elflord
-colorscheme peachpuff
+"colorscheme peachpuff
 "colorscheme solarized
 "set background=dark
 

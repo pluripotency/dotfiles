@@ -28,11 +28,13 @@ def install_platform_dependancy(session, additional_pkgs):
         base_shell.run(session, 'sudo dnf install -y epel-release')
         if platform in ['almalinux8', 'centos8stream']:
             base_shell.run(session, 'sudo dnf install -y fuse tar ripgrep fd-find unzip wget gcc ' + ' '.join(additional_pkgs))
-        elif platform.startswith('almalinux') or platform in ['centos9stream', 'fedora']:
+        else:
             base_shell.run(session, 'sudo dnf install -y fuse fuse-libs xclip ripgrep fd-find unzip wget gcc ' + ' '.join(additional_pkgs))
     elif re.search('^ubuntu', platform):
         pkgs = 'libfuse2 unzip xz-utils fd-find ripgrep gcc ' + ' '.join(additional_pkgs)
         base_shell.run(session, f'sudo apt update && sudo apt -y install {pkgs} && reset')
+        alias_str = 'alias uapt="sudo apt update && sudo apt upgrade -y"'
+        base_shell.idempotent_append(session, '~/.bashrc', alias_str, alias_str)
     elif platform.startswith('arch'):
         PACKMAN_NOCONFIRM = 'pacman --noconfirm'
         pkgs = ['zig neovim ripgrep fd'] + additional_pkgs
@@ -58,11 +60,3 @@ def install_appimage(version='latest', arch="linux-x86_64", additional_pkgs=[]):
         add_additional(session)
         alias_appimage(install_path)(session)
     return func
-
-def input_nvim_params(self):
-    from mini.menu import get_input
-    self.nvim_version = get_input(expression=r'^(latest|v\d(\.\d{1,2}){1,2})$', message='nvim ver[v0.10.4, latest, etc.]', default_value=self.nvim_version)
-    return {
-        'version': self.nvim_version,
-        'arch': 'linux-x86_64',
-    }
