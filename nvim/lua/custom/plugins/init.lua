@@ -49,17 +49,17 @@ return {
         default_format_opts = {
           lsp_format = 'fallback',
         },
-        format_on_save = function(bufnr)
-          local disable_filetypes = { c = true, cpp = true, python = true }
-          local filename = vim.api.nvim_buf_get_name(bufnr)
-          if disable_filetypes[vim.bo[bufnr].filetype] or filename:match 'whichkey.lua' then
-            return nil
-          end
-          return {
-            timeout_ms = 500,
-            lsp_format = 'fallback',
-          }
-        end,
+        -- format_on_save = function(bufnr)
+        --   local disable_filetypes = { c = true, cpp = true, python = true, toml = true }
+        --   local filename = vim.api.nvim_buf_get_name(bufnr)
+        --   if disable_filetypes[vim.bo[bufnr].filetype] or filename:match 'whichkey.lua' then
+        --     return nil
+        --   end
+        --   return {
+        --     timeout_ms = 500,
+        --     lsp_format = 'fallback',
+        --   }
+        -- end,
         formatters_by_ft = {
           lua = { 'stylua' },
         },

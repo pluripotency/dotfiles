@@ -5,7 +5,11 @@ description = "better dotfiles setups"
 readme = "README.md"
 authors = [{ name = "Masayoshi Kokuryo", email = "masakoku@gmail.com" }]
 requires-python = ">=3.15"
-dependencies = ["plur>=0.20"]
+dependencies = ["plur>=0.22"]
+
+[tool.uv.sources]
+plur = { git = "https://github.com/pluripotency/plur" }
+
 [project.scripts]
 setup_menu = "plur_dotfiles.main:setup"
 
@@ -13,5 +17,3 @@ setup_menu = "plur_dotfiles.main:setup"
 requires = ["uv_build>=0.9.5,<0.10.0"]
 build-backend = "uv_build"
 
-[tool.uv.sources]
-plur = { git = "https://github.com/pluripotency/plur" }
