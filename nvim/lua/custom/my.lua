@@ -86,8 +86,11 @@ vim.keymap.set('t', '<C-j>', '<C-\\><C-n><C-w>j', { desc = 'Move focus to the ri
 vim.keymap.set('t', '<C-k>', '<C-\\><C-n><C-w>k', { desc = 'Move focus to the lower window' })
 vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l', { desc = 'Move focus to the upper window' })
 
--- vim.g.python3_host_prog = '/home/worker/.virtualenv/v3/bin/python'
--- vim.g.python_host_prog = '/home/worker/.virtualenv/v3/bin/python'
+-- Disable unused language providers
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
 
 vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup('turn_off_auto_commenting', {}),

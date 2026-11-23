@@ -286,15 +286,7 @@ require('lazy').setup({
       }
       require('mason-tool-installer').setup { ensure_installed = servers }
 
-      require('mason-lspconfig').setup {
-        ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
-        automatic_installation = false,
-        handlers = {
-          function(server_name)
-            vim.lsp.enable { server_name }
-          end,
-        },
-      }
+      require('mason-lspconfig').setup {}
       vim.lsp.config('ty', {
         settings = {
           ty = {
