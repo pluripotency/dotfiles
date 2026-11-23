@@ -6,8 +6,8 @@ if [ ! -d ${CONF_DIR} ];then
 fi
 
 BASHRC=$HOME/.bashrc
-declare -a CLNNVLIST=("nmin" "nvim" "nlit" "nold" "nvks" "nks" "lvim")
-declare -a NVLIST=("nmin" "nvim" "nvks" "nold" "nlit")
+declare -a CLNNVLIST=("nmin" "nvim" "nv" "nlit" "nold" "nvks" "nks" "lvim")
+declare -a NVLIST=("nmin" "nvim" "nv" "nlit")
 declare -a UNCONFLIST=("ruff", "pylintrc")
 declare -a CONFLIST=("ruff")
 

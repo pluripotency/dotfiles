@@ -15,7 +15,8 @@ def alias_appimage(install_path):
 
 def add_additional(session):
     if base_shell.check_command_exists(session, 'npm'):
-        base_shell.run(session, 'npm i -g neovim tree-sitter-cli')
+        # base_shell.run(session, 'npm i -g neovim tree-sitter-cli')
+        base_shell.run(session, 'npm i -g neovim')
     if base_shell.check_command_exists(session, 'uv'):
         base_shell.run(session, 'uv tool install --upgrade pynvim')
         base_shell.run(session, 'uv tool install ruff')
