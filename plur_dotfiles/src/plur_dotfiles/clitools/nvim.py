@@ -1,7 +1,6 @@
 import re
 from plur import base_node
 from plur import base_shell
-# from plur_dotfiles.langs import nvm
 
 def alias_appimage(install_path):
     def func(session):
@@ -13,18 +12,9 @@ def alias_appimage(install_path):
         ]]
     return func
 
-# def add_additional(session):
-#     if base_shell.check_command_exists(session, 'npm'):
-#         base_shell.run(session, 'npm i -g neovim')
-#     if base_shell.check_command_exists(session, 'uv'):
-#         base_shell.run(session, 'uv tool install --upgrade pynvim')
-#         base_shell.run(session, 'uv tool install ruff')
-
 def install_platform_dependancy(session, additional_pkgs):
     platform = session.nodes[-1].platform
-    # node_version = '--lts'
     if base_node.is_platform_rhel(platform):
-        # node_version = '24'
         base_shell.run(session, 'sudo dnf install -y epel-release')
         if platform in ['almalinux8', 'centos8stream']:
             base_shell.run(session, 'sudo dnf install -y fuse tar ripgrep fd-find unzip wget gcc ' + ' '.join(additional_pkgs))
@@ -39,7 +29,6 @@ def install_platform_dependancy(session, additional_pkgs):
         PACKMAN_NOCONFIRM = 'pacman --noconfirm'
         pkgs = ['zig neovim ripgrep fd'] + additional_pkgs
         base_shell.run(session, f'sudo {PACKMAN_NOCONFIRM} -Syy ' + ' '.join(pkgs))
-    # nvm.install(node_version)(session)
 
 def install_appimage(version='latest', arch="linux-x86_64", additional_pkgs=[]):
     def func(session):
@@ -57,6 +46,5 @@ def install_appimage(version='latest', arch="linux-x86_64", additional_pkgs=[]):
             , f"chmod u+x {appimage}"
             , f"sudo mv {appimage} {dir_path}/"
         ]]
-        # add_additional(session)
         alias_appimage(install_path)(session)
     return func
